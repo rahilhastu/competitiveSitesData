@@ -1202,7 +1202,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","username":"rahilhastu","current
                     margin-right: 2px;">7</span><span>Fcdkbear</span></a></div>
         <div class="institute" title="Vinnytsia National Technical University, Ukraine">Vinnytsia National Technical University, Ukraine</div>
     </td>
-    <td class="num">
+    <td class="num" >
         <div title="Rating 2563" class="score">2563</div>
     </td>
     <td class="num">
