@@ -1211,7 +1211,490 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","username":"rahilhastu","current
             0
         </div>
     </td>
-</tr> </tbody>         </table>     </div>      <div class="paginationbox"><ul> <li class="jump"><a id="ember553" class="ember-view active" href="/ratings/all?order=desc&amp;sortBy=rating">1</a></li> <li><a class="disabled"><img src="/em/images/pagination-left.png" alt="Previous" title="Previous" border="0"></a></li> <li><a id="ember554" class="ember-view active" href="/ratings/all?order=desc&amp;sortBy=rating">1</a></li> <li><a id="ember556" class="ember-view" href="/ratings/all?order=desc&amp;page=2&amp;sortBy=rating">2</a></li> <li><a id="ember558" class="ember-view" href="/ratings/all?order=desc&amp;page=3&amp;sortBy=rating">3</a></li> <li><a id="ember560" class="ember-view" href="/ratings/all?order=desc&amp;page=4&amp;sortBy=rating">4</a></li> <li><a id="ember562" class="ember-view" href="/ratings/all?order=desc&amp;page=5&amp;sortBy=rating">5</a></li> <li><a id="ember564" class="ember-view" href="/ratings/all?order=desc&amp;page=6&amp;sortBy=rating">6</a></li> <li><a id="ember566" class="ember-view" href="/ratings/all?order=desc&amp;page=7&amp;sortBy=rating">7</a></li> <li><a id="ember568" class="ember-view" href="/ratings/all?order=desc&amp;page=2&amp;sortBy=rating"><img src="/em/images/pagination-right.png" alt="Next" title="Next" border="0"></a></li> <li class="jump"><a id="ember569" class="ember-view" href="/ratings/all?order=desc&amp;page=5331&amp;sortBy=rating">5331</a></li></ul></div>    </div></div>
+</tr>
+<tr id="ember716" class="ember-view">
+    <td class="num">
+        <div title="" id="">101 (13)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="India" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/in.png"></div>
+        <div class="user-name" title="Pranjal Shankhdhar"><a href="/users/evil999man"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>evil999man</span></a></div>
+        <div class="institute" title="Indian Institute of Technology Kharagpur">Indian Institute of Technology Kharagpur</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2435" class="score">2435</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 83" class="score">
+            <span class="icon-rating-diff"><img src="https://codechef_shared.s3.amazonaws.com/download/arrows/green.png"></span>
+            83
+        </div>
+    </td>
+</tr>  <tr id="ember717" class="ember-view">
+    <td class="num">
+        <div title="" id="">102 (5)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="Romania" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/ro.png"></div>
+        <div class="user-name" title="Tiberiu Popa"><a href="/users/tibip"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>tibip</span></a></div>
+        <div class="institute" title="Facebook">Facebook</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2434" class="score">2434</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember718" class="ember-view">
+    <td class="num">
+        <div title="" id="">102 (21)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="China" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/cn.png"></div>
+        <div class="user-name" title="Gedi Zheng"><a href="/users/stzgd"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>stzgd</span></a></div>
+        <div class="institute" title="Google">Google</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2434" class="score">2434</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember719" class="ember-view">
+    <td class="num">
+        <div title="" id="">104 (2)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="Vietnam" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/vn.png"></div>
+        <div class="user-name" title="Hoang Dai Pham"><a href="/users/creatnx"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>creatnx</span></a></div>
+        <div class="institute" title="Crap University, Vietnam ">Crap University, Vietnam </div>
+    </td>
+    <td class="num">
+        <div title="Rating 2433" class="score">2433</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change -38" class="score">
+            <span class="icon-rating-diff"><img src="https://codechef_shared.s3.amazonaws.com/download/arrows/red.png"></span>
+            -38
+        </div>
+    </td>
+</tr>  <tr id="ember720" class="ember-view">
+    <td class="num">
+        <div title="" id="">105 (22)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="China" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/cn.png"></div>
+        <div class="user-name" title="WAer"><a href="/users/wrong_answer_1"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>wrong_answer_1</span></a></div>
+        <div class="institute" title="Fuzhou No.1 High School">Fuzhou No.1 High School</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2430" class="score">2430</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember721" class="ember-view">
+    <td class="num">
+        <div title="" id="">105 (8)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="Russia" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/ru.png"></div>
+        <div class="user-name" title="Anton Demidov"><a href="/users/dontsleep"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>dontsleep</span></a></div>
+        <div class="institute" title="R&amp;P Prima">R&amp;P Prima</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2430" class="score">2430</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember722" class="ember-view">
+    <td class="num">
+        <div title="" id="">107 (14)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="India" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/in.png"></div>
+        <div class="user-name" title="Yash Sadhwan"><a href="/users/sadhwaniyash6"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>sadhwaniyash6</span></a></div>
+        <div class="institute" title="Microsoft">Microsoft</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2428" class="score">2428</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember723" class="ember-view">
+    <td class="num">
+        <div title="" id="">108 (3)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="Vietnam" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/vn.png"></div>
+        <div class="user-name" title="Le Yen Thanh"><a href="/users/yenthanh132"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>yenthanh132</span></a></div>
+        <div class="institute" title="Ho Chi Minh City University of Science">Ho Chi Minh City University of Science</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2427" class="score">2427</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember724" class="ember-view">
+    <td class="num">
+        <div title="" id="">108 (23)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="China" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/cn.png"></div>
+        <div class="user-name" title="Wenhan Huang"><a href="/users/rowdark"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>rowdark</span></a></div>
+        <div class="institute" title="Shanghai Jiao Tong University">Shanghai Jiao Tong University</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2427" class="score">2427</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember725" class="ember-view">
+    <td class="num">
+        <div title="" id="">110 (1)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="Indonesia" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/id.png"></div>
+        <div class="user-name" title="Stefano Chiesa"><a href="/users/zeulb"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>zeulb</span></a></div>
+        <div class="institute" title="National University of Singapore">National University of Singapore</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2426" class="score">2426</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember726" class="ember-view">
+    <td class="num">
+        <div title="" id="">110 (9)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="Russia" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/ru.png"></div>
+        <div class="user-name" title="Nikita Podguzov"><a href="/users/nikitosh"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>nikitosh</span></a></div>
+        <div class="institute" title="Saint Petersburg Academic University">Saint Petersburg Academic University</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2426" class="score">2426</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember727" class="ember-view">
+    <td class="num">
+        <div title="" id="">112 (11)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="Japan" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/jp.png"></div>
+        <div class="user-name" title="Nobuaki Tanaka"><a href="/users/tomerun"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>tomerun</span></a></div>
+        <div class="institute" title="Tokyo">Tokyo</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2422" class="score">2422</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember728" class="ember-view">
+    <td class="num">
+        <div title="" id="">113 (10)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="Russia" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/ru.png"></div>
+        <div class="user-name" title="Ilya"><a href="/users/izban"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>izban</span></a></div>
+        <div class="institute" title="Saint Petersburg National Research University of Information Technologies, Mechanics and Optics">Saint Petersburg National Research University of Information Technologies, Mechanics and Optics</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2420" class="score">2420</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember729" class="ember-view">
+    <td class="num">
+        <div title="" id="">114 (3)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="Belarus" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/by.png"></div>
+        <div class="user-name" title="Kanstantsin Sokal"><a href="/users/kostya_by"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>kostya_by</span></a></div>
+        <div class="institute" title="Belarusian State University">Belarusian State University</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2419" class="score">2419</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember730" class="ember-view">
+    <td class="num">
+        <div title="" id="">115 (15)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="India" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/in.png"></div>
+        <div class="user-name" title="Nitin Rathor"><a href="/users/n1t1n_153012"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>n1t1n_153012</span></a></div>
+        <div class="institute" title="Indian Institute of Technology">Indian Institute of Technology</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2417" class="score">2417</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember731" class="ember-view">
+    <td class="num">
+        <div title="" id="">116 (11)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="Russia" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/ru.png"></div>
+        <div class="user-name" title="Alexander Ostanin"><a href="/users/kostroma"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>kostroma</span></a></div>
+        <div class="institute" title="Moscow Institute of Physics and Technology">Moscow Institute of Physics and Technology</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2416" class="score">2416</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember732" class="ember-view">
+    <td class="num">
+        <div title="" id="">117 (9)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="United States" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/us.png"></div>
+        <div class="user-name" title="Chris Narrikkattu"><a href="/users/narri"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>narri</span></a></div>
+        <div class="institute" title="Bloomberg L.P.">Bloomberg L.P.</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2413" class="score">2413</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember733" class="ember-view">
+    <td class="num">
+        <div title="" id="">117 (2)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="Poland" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/pl.png"></div>
+        <div class="user-name" title="Dawid Jamka"><a href="/users/shadowatyy"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>shadowatyy</span></a></div>
+        <div class="institute" title="VI LO im. Jana Kochanowskiego w Radomiu">VI LO im. Jana Kochanowskiego w Radomiu</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2413" class="score">2413</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  <tr id="ember734" class="ember-view">
+    <td class="num">
+        <div title="" id="">119 (12)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="Russia" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/ru.png"></div>
+        <div class="user-name" title="Alexander Yuriev"><a href="/users/lutyj"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>lutyj</span></a></div>
+        <div class="institute" title="Not Available">Not Available</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2411" class="score">2411</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 73" class="score">
+            <span class="icon-rating-diff"><img src="https://codechef_shared.s3.amazonaws.com/download/arrows/green.png"></span>
+            73
+        </div>
+    </td>
+</tr>  <tr id="ember735" class="ember-view">
+    <td class="num">
+        <div title="" id="">120 (6)</div>
+    </td>
+    <td class="user-handle">
+        <div class="flag"><img title="Romania" src="https://codechef_shared.s3.amazonaws.com/download/flags/24/ro.png"></div>
+        <div class="user-name" title="Radu Visan"><a href="/users/visanr"><span class="rating" style="display: inline-block; 
+                    font-size: 10px; 
+                    background: #FF7F00;
+                    padding: 0 3px; 
+                    line-height: 1.3; 
+                    color: white;
+                    margin-right: 2px;">6</span><span>visanr</span></a></div>
+        <div class="institute" title="Universitatea Politehnica din Bucuresti">Universitatea Politehnica din Bucuresti</div>
+    </td>
+    <td class="num">
+        <div title="Rating 2410" class="score">2410</div>
+    </td>
+    <td class="num">
+        <div title="Rating Change 0" class="score">
+            
+            0
+        </div>
+    </td>
+</tr>  
+
+</tbody>         </table>     </div>      <div class="paginationbox"><ul> <li class="jump"><a id="ember553" class="ember-view active" href="/ratings/all?order=desc&amp;sortBy=rating">1</a></li> <li><a class="disabled"><img src="/em/images/pagination-left.png" alt="Previous" title="Previous" border="0"></a></li> <li><a id="ember554" class="ember-view active" href="/ratings/all?order=desc&amp;sortBy=rating">1</a></li> <li><a id="ember556" class="ember-view" href="/ratings/all?order=desc&amp;page=2&amp;sortBy=rating">2</a></li> <li><a id="ember558" class="ember-view" href="/ratings/all?order=desc&amp;page=3&amp;sortBy=rating">3</a></li> <li><a id="ember560" class="ember-view" href="/ratings/all?order=desc&amp;page=4&amp;sortBy=rating">4</a></li> <li><a id="ember562" class="ember-view" href="/ratings/all?order=desc&amp;page=5&amp;sortBy=rating">5</a></li> <li><a id="ember564" class="ember-view" href="/ratings/all?order=desc&amp;page=6&amp;sortBy=rating">6</a></li> <li><a id="ember566" class="ember-view" href="/ratings/all?order=desc&amp;page=7&amp;sortBy=rating">7</a></li> <li><a id="ember568" class="ember-view" href="/ratings/all?order=desc&amp;page=2&amp;sortBy=rating"><img src="/em/images/pagination-right.png" alt="Next" title="Next" border="0"></a></li> <li class="jump"><a id="ember569" class="ember-view" href="/ratings/all?order=desc&amp;page=5331&amp;sortBy=rating">5331</a></li></ul></div>    </div></div>
 </div>
 </div></div>
 
