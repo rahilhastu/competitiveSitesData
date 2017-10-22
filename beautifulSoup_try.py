@@ -1145,22 +1145,17 @@ $(document).ready(function () {
     <iframe name="oauth2relay1866407866" id="oauth2relay1866407866" src="https://accounts.google.com/o/oauth2/postmessageRelay?parent=https%3A%2F%2Fwww.codechef.com&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en_GB.jZlbLyc1fDY.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCPMZvfAtx8YpkBWI54sUxsz5gj92Q#rpctoken=743863317&amp;forcesecure=1" style="width: 1px; height: 1px; position: absolute; top: -100px;" tabindex="-1" aria-hidden="true"></iframe><div id="ads"></div><script src="https://dc.ads.linkedin.com/collect/?time=1508585950559&amp;pid=93463&amp;url=https%3A%2F%2Fwww.codechef.com%2Fratings%2Fall%3Forder%3Ddesc%26sortBy%3Drating&amp;pageUrl=https%3A%2F%2Fwww.codechef.com%2Fratings%2Fall%3Forder%3Ddesc%26sortBy%3Drating&amp;ref=&amp;fmt=js&amp;s=1" type="text/javascript"></script><script src="https://px.ads.linkedin.com/collect/?time=1508585950559&amp;pid=93463&amp;url=https%3A%2F%2Fwww.codechef.com%2Fratings%2Fall%3Forder%3Ddesc%26sortBy%3Drating&amp;pageUrl=https%3A%2F%2Fwww.codechef.com%2Fratings%2Fall%3Forder%3Ddesc%26sortBy%3Drating&amp;ref=&amp;fmt=js&amp;s=1" type="text/javascript"></script></body></html>
     """
 from bs4 import BeautifulSoup
-import os
-# import requests
+
 soupData = BeautifulSoup(html_doc,"lxml")
 
-########################################################
-########################################################
-########################################################
 for person in soupData.findAll('tr',{'class','ember-view'}):
-    # titles = person.find('span',{"class":"rating"})
-    # userName = person.find('span',{"class":""})
-    # institute = person.find('div',{"class":"institute"})
-    # rating = person.find('div',{"class":"score"})
-    # country = person.find('img')
-    # rating = person.find('div',{"class":"score"})
-    print person
-    # print titles.text,"-",institute.text,'-',rating.text,'-',userName.text,"-",country['title']
-  # for user in person.findAll('td',{'class','user-handle'}):
-    # print user 
-    # for people in user.findAll("td",{'class','user-handle'}):
+	name = person.find('div',{'class','user-name'})
+	username = person.find('span',{"class":""})
+	institute = person.find('div',{"class":"institute"})
+	country = person.find('img')
+	rating = person.find('span',{"class":"rating"})
+	points = person.find('div',{"class":"score"})
+	rank = person.find('td',{'class','num'})
+	# rating = person.find('div',{"class":"score"})
+    # print person
+	print 'Name : ',name['title'],'\nUsername : ',username.text,'\nInstitute : ',institute.text,'\nCountry : ',country['title'],'\nRating : ',rating.text,'\nPoints : ',points.text,'\nGlobal(Country)',rank.text
