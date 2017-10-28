@@ -193,10 +193,14 @@ DROP TABLE IF EXISTS `contests`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `contests` (
   `username` varchar(50) NOT NULL,
-  `contest_code` varchar(30) NOT NULL,
-  UNIQUE KEY `contest_code` (`contest_code`,`username`),
-  KEY `username` (`username`),
-  CONSTRAINT `contests_ibfk_1` FOREIGN KEY (`username`) REFERENCES `has_account` (`username`) ON DELETE CASCADE ON UPDATE CASCADE
+  `contest_code` varchar(50) NOT NULL,
+  `question_code` varchar(30) NOT NULL,
+  UNIQUE KEY `username` (`username`,`contest_code`,`question_code`),
+  KEY `contest_code` (`contest_code`),
+  KEY `question_code` (`question_code`),
+  CONSTRAINT `contests_ibfk_1` FOREIGN KEY (`username`) REFERENCES `has_account` (`username`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `contests_ibfk_2` FOREIGN KEY (`contest_code`) REFERENCES `questions` (`contest_code`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `contests_ibfk_3` FOREIGN KEY (`question_code`) REFERENCES `questions` (`question_code`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -206,7 +210,7 @@ CREATE TABLE `contests` (
 
 LOCK TABLES `contests` WRITE;
 /*!40000 ALTER TABLE `contests` DISABLE KEYS */;
-INSERT INTO `contests` VALUES ('rahilhastu','LONG10'),('riakedia','LONG10');
+INSERT INTO `contests` VALUES ('rahilhastu','LONG10','kqw'),('rahilhastu','LONG10','MO'),('riakedia','LONG13','PO');
 /*!40000 ALTER TABLE `contests` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -388,10 +392,11 @@ DROP TABLE IF EXISTS `questions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `questions` (
+  `site_id` int(11) NOT NULL,
   `contest_code` varchar(50) NOT NULL,
-  `question_code` varchar(50) NOT NULL,
+  `question_code` varchar(30) NOT NULL,
   UNIQUE KEY `contest_code` (`contest_code`,`question_code`),
-  CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`contest_code`) REFERENCES `contests` (`contest_code`) ON DELETE CASCADE ON UPDATE CASCADE
+  UNIQUE KEY `question_code` (`question_code`,`contest_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -401,7 +406,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES ('LONG10','LO'),('LONG10','PO');
+INSERT INTO `questions` VALUES (0,'LONG10','Kqw'),(0,'LONG10','MO'),(0,'LONG10','PO'),(0,'LONG13','aqw'),(0,'LONG13','PO');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -439,4 +444,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-28 20:01:03
+-- Dump completed on 2017-10-28 21:12:19
