@@ -225,7 +225,8 @@ CREATE TABLE `details` (
   `country` varchar(15) DEFAULT NULL,
   `problems_solved` int(11) DEFAULT NULL,
   `institute` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`site_id`),
+  UNIQUE KEY `site_id` (`site_id`,`username`),
+  UNIQUE KEY `site_id_2` (`site_id`,`rank`),
   KEY `username` (`username`),
   CONSTRAINT `details_ibfk_1` FOREIGN KEY (`username`) REFERENCES `has_account` (`username`),
   CONSTRAINT `details_ibfk_2` FOREIGN KEY (`username`) REFERENCES `has_account` (`username`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -239,6 +240,7 @@ CREATE TABLE `details` (
 
 LOCK TABLES `details` WRITE;
 /*!40000 ALTER TABLE `details` DISABLE KEYS */;
+INSERT INTO `details` VALUES (0,'rahilhastu','Rahil Hastu',100,'India',66,'PES INSTITUTE OF TECHNOLOGY'),(0,'riakedia','Ria Kedia',101,'India',66,'PES INSTITUTE OF TECHNOLOGY'),(1,'rahilhastu','Rahil Hastu',17,'India',66,'PES INSTITUTE OF TECHNOLOGY');
 /*!40000 ALTER TABLE `details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -374,6 +376,7 @@ CREATE TABLE `has_account` (
 
 LOCK TABLES `has_account` WRITE;
 /*!40000 ALTER TABLE `has_account` DISABLE KEYS */;
+INSERT INTO `has_account` VALUES ('rahilhastu','codechef'),('riakedia','codechef'),('rahilhastu','Hackerrank'),('rahilhastu','Spoj');
 /*!40000 ALTER TABLE `has_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -448,6 +451,7 @@ CREATE TABLE `sites` (
 
 LOCK TABLES `sites` WRITE;
 /*!40000 ALTER TABLE `sites` DISABLE KEYS */;
+INSERT INTO `sites` VALUES (0,'Codechef'),(1,'Hackerrank'),(2,'Spoj');
 /*!40000 ALTER TABLE `sites` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -460,4 +464,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-28 16:15:53
+-- Dump completed on 2017-10-28 17:25:36
