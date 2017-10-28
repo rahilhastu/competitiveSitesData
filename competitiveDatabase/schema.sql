@@ -230,7 +230,7 @@ CREATE TABLE `details` (
   KEY `username` (`username`),
   CONSTRAINT `details_ibfk_1` FOREIGN KEY (`username`) REFERENCES `has_account` (`username`),
   CONSTRAINT `details_ibfk_2` FOREIGN KEY (`username`) REFERENCES `has_account` (`username`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `details_ibfk_3` FOREIGN KEY (`site_id`) REFERENCES `sites` (`site_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `details_ibfk_3` FOREIGN KEY (`site_id`, `username`) REFERENCES `has_account` (`site_id`, `username`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -240,7 +240,6 @@ CREATE TABLE `details` (
 
 LOCK TABLES `details` WRITE;
 /*!40000 ALTER TABLE `details` DISABLE KEYS */;
-INSERT INTO `details` VALUES (0,'rahilhastu','Rahil Hastu',100,'India',66,'PES INSTITUTE OF TECHNOLOGY'),(0,'riakedia','Ria Kedia',101,'India',66,'PES INSTITUTE OF TECHNOLOGY'),(1,'rahilhastu','Rahil Hastu',17,'India',66,'PES INSTITUTE OF TECHNOLOGY');
 /*!40000 ALTER TABLE `details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -363,10 +362,10 @@ DROP TABLE IF EXISTS `has_account`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `has_account` (
   `username` varchar(50) NOT NULL,
-  `site` varchar(20) NOT NULL,
-  UNIQUE KEY `username` (`username`,`site`),
-  KEY `site` (`site`),
-  CONSTRAINT `has_account_ibfk_1` FOREIGN KEY (`site`) REFERENCES `sites` (`site`)
+  `site_id` int(11) NOT NULL,
+  UNIQUE KEY `username` (`username`,`site_id`),
+  KEY `site_id` (`site_id`),
+  CONSTRAINT `has_account_ibfk_1` FOREIGN KEY (`site_id`) REFERENCES `sites` (`site_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -376,7 +375,6 @@ CREATE TABLE `has_account` (
 
 LOCK TABLES `has_account` WRITE;
 /*!40000 ALTER TABLE `has_account` DISABLE KEYS */;
-INSERT INTO `has_account` VALUES ('rahilhastu','codechef'),('riakedia','codechef'),('rahilhastu','Hackerrank'),('rahilhastu','Spoj');
 /*!40000 ALTER TABLE `has_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -464,4 +462,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-28 17:25:36
+-- Dump completed on 2017-10-28 18:01:57
