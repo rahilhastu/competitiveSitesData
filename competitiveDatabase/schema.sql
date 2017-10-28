@@ -240,6 +240,7 @@ CREATE TABLE `details` (
 
 LOCK TABLES `details` WRITE;
 /*!40000 ALTER TABLE `details` DISABLE KEYS */;
+INSERT INTO `details` VALUES (0,'yashkumar','Yash Kumar',9,'India',5,'PES INSTITUTE OF TECHNOLOGY'),(1,'chehaknayar','Chehak Nayar',12,'India',5,'PES INSTITUTE OF TECHNOLOGY'),(1,'rahilhastu','Rahil Hastu',2,'India',5,'PES INSTITUTE OF TECHNOLOGY'),(1,'yashkumar','Yash Kumar',9,'India',5,'PES INSTITUTE OF TECHNOLOGY');
 /*!40000 ALTER TABLE `details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -375,6 +376,7 @@ CREATE TABLE `has_account` (
 
 LOCK TABLES `has_account` WRITE;
 /*!40000 ALTER TABLE `has_account` DISABLE KEYS */;
+INSERT INTO `has_account` VALUES ('rahilhastu',0),('riakedia',0),('yashkumar',0),('chehaknayar',1),('rahilhastu',1),('riakedia',1),('yashkumar',1),('rahilhastu',2);
 /*!40000 ALTER TABLE `has_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -462,4 +464,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-28 18:01:57
+-- Dump completed on 2017-10-28 18:29:53
