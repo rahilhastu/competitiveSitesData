@@ -193,10 +193,8 @@ DROP TABLE IF EXISTS `contests`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `contests` (
   `username` varchar(50) DEFAULT NULL,
-  `contest_code` varchar(20) NOT NULL,
-  PRIMARY KEY (`contest_code`),
-  UNIQUE KEY `contests` (`contest_code`),
-  KEY `username` (`username`),
+  `contest_code` varchar(20) DEFAULT NULL,
+  UNIQUE KEY `username` (`username`,`contest_code`),
   CONSTRAINT `contests_ibfk_1` FOREIGN KEY (`username`) REFERENCES `has_account` (`username`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -207,6 +205,7 @@ CREATE TABLE `contests` (
 
 LOCK TABLES `contests` WRITE;
 /*!40000 ALTER TABLE `contests` DISABLE KEYS */;
+INSERT INTO `contests` VALUES ('chehaknayar','LONG10'),('rahilhastu','LONG10'),('rahilhastu','LONG12'),('riakedia','LONG10');
 /*!40000 ALTER TABLE `contests` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -391,8 +390,7 @@ CREATE TABLE `questions` (
   `contest_code` varchar(20) DEFAULT NULL,
   `question_code` varchar(30) NOT NULL,
   PRIMARY KEY (`question_code`),
-  KEY `contest_code` (`contest_code`),
-  CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`contest_code`) REFERENCES `contests` (`contest_code`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `contest_code` (`contest_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -464,4 +462,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-28 18:29:53
+-- Dump completed on 2017-10-28 19:00:06
