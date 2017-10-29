@@ -201,7 +201,7 @@ CREATE TABLE `contests` (
   PRIMARY KEY (`site_id`,`username`,`question_code`,`contest_code`,`language`),
   KEY `username` (`username`,`site_id`),
   KEY `site_id` (`site_id`,`contest_code`,`question_code`),
-  CONSTRAINT `contests_ibfk_1` FOREIGN KEY (`username`, `site_id`) REFERENCES `has_account` (`username`, `site_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `contests_ibfk_1` FOREIGN KEY (`username`, `site_id`) REFERENCES `users` (`username`, `site_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `contests_ibfk_2` FOREIGN KEY (`site_id`, `contest_code`, `question_code`) REFERENCES `questions` (`site_id`, `contest_code`, `question_code`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -232,9 +232,9 @@ CREATE TABLE `details` (
   UNIQUE KEY `site_id` (`site_id`,`username`),
   UNIQUE KEY `site_id_2` (`site_id`,`rank`),
   KEY `username` (`username`),
-  CONSTRAINT `details_ibfk_1` FOREIGN KEY (`username`) REFERENCES `has_account` (`username`),
-  CONSTRAINT `details_ibfk_2` FOREIGN KEY (`username`) REFERENCES `has_account` (`username`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `details_ibfk_3` FOREIGN KEY (`site_id`, `username`) REFERENCES `has_account` (`site_id`, `username`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `details_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`),
+  CONSTRAINT `details_ibfk_2` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `details_ibfk_3` FOREIGN KEY (`site_id`, `username`) REFERENCES `users` (`site_id`, `username`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -359,32 +359,6 @@ LOCK TABLES `django_session` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `has_account`
---
-
-DROP TABLE IF EXISTS `has_account`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `has_account` (
-  `username` varchar(50) NOT NULL,
-  `site_id` int(11) NOT NULL,
-  UNIQUE KEY `username` (`username`,`site_id`),
-  KEY `site_id` (`site_id`),
-  CONSTRAINT `has_account_ibfk_1` FOREIGN KEY (`site_id`) REFERENCES `sites` (`site_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `has_account`
---
-
-LOCK TABLES `has_account` WRITE;
-/*!40000 ALTER TABLE `has_account` DISABLE KEYS */;
-INSERT INTO `has_account` VALUES ('rahilhastu',0),('riakedia',0),('yashkumar',0),('chehaknayar',1),('rahilhastu',1),('riakedia',1),('yashkumar',1),('rahilhastu',2);
-/*!40000 ALTER TABLE `has_account` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `questions`
 --
 
@@ -435,6 +409,32 @@ LOCK TABLES `sites` WRITE;
 INSERT INTO `sites` VALUES (0,'Codechef'),(1,'Hackerrank'),(2,'Spoj');
 /*!40000 ALTER TABLE `sites` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `username` varchar(50) NOT NULL,
+  `site_id` int(11) NOT NULL,
+  UNIQUE KEY `username` (`username`,`site_id`),
+  KEY `site_id` (`site_id`),
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`site_id`) REFERENCES `sites` (`site_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES ('rahilhastu',0),('riakedia',0),('yashkumar',0),('chehaknayar',1),('rahilhastu',1),('riakedia',1),('yashkumar',1),('rahilhastu',2);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -445,4 +445,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-29 15:29:07
+-- Dump completed on 2017-10-29 15:41:47
