@@ -228,7 +228,6 @@ CREATE TABLE `details` (
   `name` varchar(100) NOT NULL,
   `rank` int(11) DEFAULT NULL,
   `country` varchar(15) DEFAULT NULL,
-  `problems_solved` int(11) DEFAULT NULL,
   `institute` varchar(100) DEFAULT NULL,
   UNIQUE KEY `site_id` (`site_id`,`username`),
   UNIQUE KEY `site_id_2` (`site_id`,`rank`),
@@ -245,7 +244,7 @@ CREATE TABLE `details` (
 
 LOCK TABLES `details` WRITE;
 /*!40000 ALTER TABLE `details` DISABLE KEYS */;
-INSERT INTO `details` VALUES (0,'yashkumar','Yash Kumar',9,'India',5,'PES INSTITUTE OF TECHNOLOGY'),(1,'chehaknayar','Chehak Nayar',12,'India',5,'PES INSTITUTE OF TECHNOLOGY'),(1,'rahilhastu','Rahil Hastu',2,'India',5,'PES INSTITUTE OF TECHNOLOGY'),(1,'yashkumar','Yash Kumar',9,'India',5,'PES INSTITUTE OF TECHNOLOGY');
+INSERT INTO `details` VALUES (0,'yashkumar','Yash Kumar',9,'India','PES INSTITUTE OF TECHNOLOGY'),(1,'chehaknayar','Chehak Nayar',12,'India','PES INSTITUTE OF TECHNOLOGY'),(1,'rahilhastu','Rahil Hastu',2,'India','PES INSTITUTE OF TECHNOLOGY'),(1,'yashkumar','Yash Kumar',9,'India','PES INSTITUTE OF TECHNOLOGY');
 /*!40000 ALTER TABLE `details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -446,4 +445,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-29 15:19:02
+-- Dump completed on 2017-10-29 15:29:07
