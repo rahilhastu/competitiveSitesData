@@ -210,6 +210,7 @@ CREATE TABLE `contests` (
 
 LOCK TABLES `contests` WRITE;
 /*!40000 ALTER TABLE `contests` DISABLE KEYS */;
+INSERT INTO `contests` VALUES (1,'chehaknayar','hell','POT'),(0,'rahilhastu','aqw','LONG13'),(0,'rahilhastu','Kqw','LONG10'),(1,'rahilhastu','hell','POT'),(0,'riakedia','aqw','LONG13'),(0,'riakedia','PO','LONG10'),(0,'riakedia','PO','LONG13');
 /*!40000 ALTER TABLE `contests` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -406,7 +407,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (0,'LONG10','Kqw'),(0,'LONG10','MO'),(0,'LONG10','PO'),(0,'LONG13','aqw'),(0,'LONG13','PO');
+INSERT INTO `questions` VALUES (0,'LONG10','Kqw'),(0,'LONG10','MO'),(0,'LONG10','PO'),(0,'LONG13','aqw'),(0,'LONG13','PO'),(1,'POT','hell');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -434,6 +435,7 @@ CREATE TABLE `result` (
 
 LOCK TABLES `result` WRITE;
 /*!40000 ALTER TABLE `result` DISABLE KEYS */;
+INSERT INTO `result` VALUES (0,'rahilhastu','aqw','correct','Java'),(0,'riakedia','aqw','correct','Java'),(1,'chehaknayar','hell','correct','Java'),(1,'rahilhastu','hell','correct','c++'),(1,'rahilhastu','hell','correct','Java'),(1,'rahilhastu','hell','correct','python');
 /*!40000 ALTER TABLE `result` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -471,4 +473,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-29 13:57:43
+-- Dump completed on 2017-10-29 14:31:45
