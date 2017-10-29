@@ -194,12 +194,11 @@ DROP TABLE IF EXISTS `contests`;
 CREATE TABLE `contests` (
   `site_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `contest_code` varchar(30) NOT NULL,
   `question_code` varchar(30) NOT NULL,
-  UNIQUE KEY `site_id` (`site_id`,`username`,`contest_code`,`question_code`),
-  UNIQUE KEY `username` (`username`,`site_id`,`contest_code`,`question_code`),
-  UNIQUE KEY `question_code` (`question_code`,`site_id`,`contest_code`,`username`),
-  KEY `site_id_2` (`site_id`,`contest_code`,`question_code`),
+  `contest_code` varchar(50) NOT NULL,
+  PRIMARY KEY (`site_id`,`username`,`question_code`,`contest_code`),
+  KEY `username` (`username`,`site_id`),
+  KEY `site_id` (`site_id`,`contest_code`,`question_code`),
   CONSTRAINT `contests_ibfk_1` FOREIGN KEY (`username`, `site_id`) REFERENCES `has_account` (`username`, `site_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `contests_ibfk_2` FOREIGN KEY (`site_id`, `contest_code`, `question_code`) REFERENCES `questions` (`site_id`, `contest_code`, `question_code`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -412,6 +411,33 @@ INSERT INTO `questions` VALUES (0,'LONG10','Kqw'),(0,'LONG10','MO'),(0,'LONG10',
 UNLOCK TABLES;
 
 --
+-- Table structure for table `result`
+--
+
+DROP TABLE IF EXISTS `result`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `result` (
+  `site_id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `question_code` varchar(30) NOT NULL,
+  `result` varchar(30) NOT NULL,
+  `language` varchar(20) NOT NULL,
+  PRIMARY KEY (`site_id`,`username`,`question_code`,`language`),
+  CONSTRAINT `result_ibfk_1` FOREIGN KEY (`site_id`, `username`, `question_code`) REFERENCES `contests` (`site_id`, `username`, `question_code`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `result`
+--
+
+LOCK TABLES `result` WRITE;
+/*!40000 ALTER TABLE `result` DISABLE KEYS */;
+/*!40000 ALTER TABLE `result` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `sites`
 --
 
@@ -445,4 +471,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-29 11:39:34
+-- Dump completed on 2017-10-29 13:57:43
