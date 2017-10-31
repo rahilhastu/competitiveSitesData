@@ -116,7 +116,7 @@ CREATE TABLE `auth_user` (
   `date_joined` datetime(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,6 +125,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$36000$2qBfAafrt722$hKufi/IrP2cYA3yzSt3siSWvarAJsyPDeFqMnhW+LGM=','2017-10-31 06:23:24.179865',1,'rahilhastu','','','rahilhastu@gmail.com',1,1,'2017-10-30 18:06:15.777081');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,11 +199,14 @@ CREATE TABLE `contests` (
   `contest_code` varchar(30) NOT NULL,
   `result` varchar(30) NOT NULL,
   `language` varchar(30) NOT NULL,
-  PRIMARY KEY (`site_id`,`username`,`question_code`,`contest_code`,`result`,`language`),
   KEY `username` (`username`,`site_id`),
   KEY `site_id` (`site_id`,`contest_code`,`question_code`),
+  KEY `contest_code` (`contest_code`,`question_code`),
+  KEY `question_code` (`question_code`,`contest_code`),
   CONSTRAINT `contests_ibfk_1` FOREIGN KEY (`username`, `site_id`) REFERENCES `users` (`username`, `site_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `contests_ibfk_2` FOREIGN KEY (`site_id`, `contest_code`, `question_code`) REFERENCES `questions` (`site_id`, `contest_code`, `question_code`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `contests_ibfk_2` FOREIGN KEY (`site_id`, `contest_code`, `question_code`) REFERENCES `questions` (`site_id`, `contest_code`, `question_code`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `contests_ibfk_3` FOREIGN KEY (`contest_code`, `question_code`) REFERENCES `questions` (`contest_code`, `question_code`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `contests_ibfk_4` FOREIGN KEY (`question_code`, `contest_code`) REFERENCES `questions` (`question_code`, `contest_code`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -355,6 +359,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
+INSERT INTO `django_session` VALUES ('zygepz8aabm6zrc5mcv78233282v1jyb','OGZkYjFjY2EyZDQ4MzhjMzNmM2I0N2ViYmVhNWU2ZDAyOGJiYmJlODp7Il9hdXRoX3VzZXJfaGFzaCI6Ijg4ZmRkOGNmZDNkZjliZjQ3ZjI3MTRkNzQ2ODJjZGE3M2JiZjkyM2UiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-11-14 06:23:24.247068');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -445,4 +450,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-29 20:03:43
+-- Dump completed on 2017-10-31 12:07:23
