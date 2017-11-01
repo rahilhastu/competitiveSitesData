@@ -2120,12 +2120,10 @@ def userData():
     username = person.find('span',{"class":""})
     institute = person.find('div',{"class":"institute"})
     country = person.find('img')
-    rating = person.find('span',{"class":"rating"})
-    points = person.find('div',{"class":"score"})
-    rank = person.find('td',{'class','num'})
+    # print type(person.find('td',{'class','num'}))
+    rank = (person.find('td',{'class','num'}))
     link = person.find('a',href=True)['href']
-    print 'Name : ',name['title'],'\nUsername : ',username.text,'\nInstitute : ',institute.text,'\nCountry : ',country['title'],'\nRating : ',rating.text,'\nPoints : ',points.text,'\nGlobal(Country)',rank.text
-
+    print '\nUsername : ',username.text,'\nName : ',name['title'],'\nInstitute : ',institute.text,'\nCountry : ',country['title'],'\nGlobal :',re.findall(r'\d{1,4}',rank.text)[0]
     crawlingUSER(link)
     print '------------------------------------------------------'
 
@@ -2148,7 +2146,7 @@ def crawlingUSER(link):
           try :
             print '\t',re.sub(',','',link_result.string) #question_code
             link_r =link_result['href']
-            print '\t',link_r,'\n' #link_of_question_code
+            # print '\t',link_r,'\n' #link_of_question_code
             crawlingUserResult(link_r)
           except:
             pass
@@ -2163,13 +2161,12 @@ def crawlingUserResult(link):
 
   for data in soupAnother.findAll('tr',{'class','\\"kol\\"'}):
     q = data.findAll('td',{'width':'70'})[0].text
-    print '\t\t',q,
+    print '\t\tlanguage used :',q,'-',
     r = data.find('td',{'class':'centered'})
     result = r.find('span')['title']
-    print result,'\n'
-    if result=='':
-      print '\t\taccepted'
-
-
+    if result == '':
+      print 'result : accepted'
+    else:
+      print 'result :'+str(result),'\n'
 
 userData()
