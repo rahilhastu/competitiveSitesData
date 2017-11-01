@@ -198,6 +198,7 @@ CREATE TABLE `details` (
   `name` varchar(100) NOT NULL,
   `rank` int(11) NOT NULL,
   `institute` varchar(100) NOT NULL,
+  `country` varchar(50) NOT NULL,
   PRIMARY KEY (`site_id`,`rank`),
   UNIQUE KEY `site_id` (`site_id`,`username`),
   CONSTRAINT `details_ibfk_1` FOREIGN KEY (`site_id`, `username`) REFERENCES `users` (`site_id`, `username`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -210,7 +211,7 @@ CREATE TABLE `details` (
 
 LOCK TABLES `details` WRITE;
 /*!40000 ALTER TABLE `details` DISABLE KEYS */;
-INSERT INTO `details` VALUES (1,'rahil','RAhil',1,'PES');
+INSERT INTO `details` VALUES (1,'rahil','RAhil',1,'PES','');
 /*!40000 ALTER TABLE `details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -371,7 +372,7 @@ CREATE TABLE `result` (
   KEY `site_id_2` (`site_id`,`contest_code`,`question_code`),
   CONSTRAINT `result_ibfk_1` FOREIGN KEY (`site_id`, `username`) REFERENCES `users` (`site_id`, `username`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `result_ibfk_2` FOREIGN KEY (`site_id`, `contest_code`, `question_code`) REFERENCES `questions` (`site_id`, `contest_code`, `question_code`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -442,4 +443,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-01 11:34:03
+-- Dump completed on 2017-11-01 18:05:23
