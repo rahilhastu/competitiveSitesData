@@ -199,7 +199,6 @@ CREATE TABLE `details` (
   `rank` int(11) NOT NULL,
   `institute` varchar(100) NOT NULL,
   `country` varchar(50) NOT NULL,
-  PRIMARY KEY (`site_id`,`rank`),
   UNIQUE KEY `site_id` (`site_id`,`username`),
   CONSTRAINT `details_ibfk_1` FOREIGN KEY (`site_id`, `username`) REFERENCES `users` (`site_id`, `username`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -443,4 +442,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-01 18:05:23
+-- Dump completed on 2017-11-01 19:38:52
