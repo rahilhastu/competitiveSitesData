@@ -326,6 +326,32 @@ INSERT INTO `django_session` VALUES ('zygepz8aabm6zrc5mcv78233282v1jyb','OGZkYjF
 UNLOCK TABLES;
 
 --
+-- Table structure for table `questions`
+--
+
+DROP TABLE IF EXISTS `questions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `questions` (
+  `site_id` int(11) NOT NULL,
+  `contest_code` varchar(100) NOT NULL,
+  `question_code` varchar(100) NOT NULL,
+  PRIMARY KEY (`site_id`,`contest_code`,`question_code`),
+  CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`site_id`) REFERENCES `sites` (`site_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `questions`
+--
+
+LOCK TABLES `questions` WRITE;
+/*!40000 ALTER TABLE `questions` DISABLE KEYS */;
+INSERT INTO `questions` VALUES (1,'A','a'),(1,'A','b'),(1,'A','c'),(1,'B','a'),(1,'B','b'),(1,'B','c'),(2,'A','a'),(2,'A','b'),(2,'A','c');
+/*!40000 ALTER TABLE `questions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `sites`
 --
 
@@ -383,4 +409,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-01 11:12:45
+-- Dump completed on 2017-11-01 11:19:13
