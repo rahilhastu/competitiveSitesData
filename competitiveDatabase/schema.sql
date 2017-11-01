@@ -186,73 +186,6 @@ LOCK TABLES `auth_user_user_permissions` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `contests`
---
-
-DROP TABLE IF EXISTS `contests`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `contests` (
-  `site_id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `question_code` varchar(30) NOT NULL,
-  `contest_code` varchar(30) NOT NULL,
-  `result` varchar(30) NOT NULL,
-  `language` varchar(30) NOT NULL,
-  KEY `username` (`username`,`site_id`),
-  KEY `site_id` (`site_id`,`contest_code`,`question_code`),
-  KEY `contest_code` (`contest_code`,`question_code`),
-  KEY `question_code` (`question_code`,`contest_code`),
-  CONSTRAINT `contests_ibfk_1` FOREIGN KEY (`username`, `site_id`) REFERENCES `users` (`username`, `site_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `contests_ibfk_2` FOREIGN KEY (`site_id`, `contest_code`, `question_code`) REFERENCES `questions` (`site_id`, `contest_code`, `question_code`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `contests_ibfk_3` FOREIGN KEY (`contest_code`, `question_code`) REFERENCES `questions` (`contest_code`, `question_code`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `contests_ibfk_4` FOREIGN KEY (`question_code`, `contest_code`) REFERENCES `questions` (`question_code`, `contest_code`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `contests`
---
-
-LOCK TABLES `contests` WRITE;
-/*!40000 ALTER TABLE `contests` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contests` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `details`
---
-
-DROP TABLE IF EXISTS `details`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `details` (
-  `site_id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `rank` int(11) DEFAULT NULL,
-  `country` varchar(15) DEFAULT NULL,
-  `institute` varchar(100) DEFAULT NULL,
-  UNIQUE KEY `site_id` (`site_id`,`username`),
-  UNIQUE KEY `site_id_2` (`site_id`,`rank`),
-  KEY `username` (`username`),
-  CONSTRAINT `details_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`),
-  CONSTRAINT `details_ibfk_2` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `details_ibfk_3` FOREIGN KEY (`site_id`, `username`) REFERENCES `users` (`site_id`, `username`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `details`
---
-
-LOCK TABLES `details` WRITE;
-/*!40000 ALTER TABLE `details` DISABLE KEYS */;
-INSERT INTO `details` VALUES (0,'yashkumar','Yash Kumar',9,'India','PES INSTITUTE OF TECHNOLOGY'),(1,'chehaknayar','Chehak Nayar',12,'India','PES INSTITUTE OF TECHNOLOGY'),(1,'rahilhastu','Rahil Hastu',2,'India','PES INSTITUTE OF TECHNOLOGY'),(1,'yashkumar','Yash Kumar',9,'India','PES INSTITUTE OF TECHNOLOGY');
-/*!40000 ALTER TABLE `details` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `django_admin_log`
 --
 
@@ -364,33 +297,6 @@ INSERT INTO `django_session` VALUES ('zygepz8aabm6zrc5mcv78233282v1jyb','OGZkYjF
 UNLOCK TABLES;
 
 --
--- Table structure for table `questions`
---
-
-DROP TABLE IF EXISTS `questions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `questions` (
-  `site_id` int(11) NOT NULL,
-  `contest_code` varchar(50) NOT NULL,
-  `question_code` varchar(30) NOT NULL,
-  UNIQUE KEY `contest_code` (`contest_code`,`question_code`),
-  UNIQUE KEY `question_code` (`question_code`,`contest_code`),
-  UNIQUE KEY `site_id` (`site_id`,`contest_code`,`question_code`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `questions`
---
-
-LOCK TABLES `questions` WRITE;
-/*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (0,'LONG10','Kqw'),(0,'LONG10','MO'),(0,'LONG10','PO'),(0,'LONG13','aqw'),(0,'LONG13','PO'),(1,'POT','hell'),(2,'SPOJ1','1q');
-/*!40000 ALTER TABLE `questions` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `sites`
 --
 
@@ -398,11 +304,10 @@ DROP TABLE IF EXISTS `sites`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sites` (
-  `site_id` int(11) NOT NULL,
-  `site` varchar(20) NOT NULL,
-  PRIMARY KEY (`site_id`),
-  UNIQUE KEY `site` (`site`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `site_id` int(11) NOT NULL AUTO_INCREMENT,
+  `site` varchar(50) NOT NULL,
+  PRIMARY KEY (`site_id`,`site`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -411,34 +316,8 @@ CREATE TABLE `sites` (
 
 LOCK TABLES `sites` WRITE;
 /*!40000 ALTER TABLE `sites` DISABLE KEYS */;
-INSERT INTO `sites` VALUES (0,'Codechef'),(1,'Hackerrank'),(2,'Spoj');
+INSERT INTO `sites` VALUES (1,'Codechef'),(2,'Hackerrank'),(3,'Spoj');
 /*!40000 ALTER TABLE `sites` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `users`
---
-
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `username` varchar(50) NOT NULL,
-  `site_id` int(11) NOT NULL,
-  UNIQUE KEY `username` (`username`,`site_id`),
-  KEY `site_id` (`site_id`),
-  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`site_id`) REFERENCES `sites` (`site_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users`
---
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('rahilhastu',0),('riakedia',0),('yashkumar',0),('chehaknayar',1),('rahilhastu',1),('riakedia',1),('yashkumar',1),('rahilhastu',2);
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -450,4 +329,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-31 12:07:23
+-- Dump completed on 2017-11-01 10:54:42
