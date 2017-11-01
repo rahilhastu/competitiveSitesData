@@ -352,6 +352,38 @@ INSERT INTO `questions` VALUES (1,'A','a'),(1,'A','b'),(1,'A','c'),(1,'B','a'),(
 UNLOCK TABLES;
 
 --
+-- Table structure for table `result`
+--
+
+DROP TABLE IF EXISTS `result`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `result` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `site_id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `contest_code` varchar(100) NOT NULL,
+  `question_code` varchar(100) NOT NULL,
+  `result` varchar(50) NOT NULL,
+  `language` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `site_id` (`site_id`,`username`),
+  KEY `site_id_2` (`site_id`,`contest_code`,`question_code`),
+  CONSTRAINT `result_ibfk_1` FOREIGN KEY (`site_id`, `username`) REFERENCES `users` (`site_id`, `username`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `result_ibfk_2` FOREIGN KEY (`site_id`, `contest_code`, `question_code`) REFERENCES `questions` (`site_id`, `contest_code`, `question_code`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `result`
+--
+
+LOCK TABLES `result` WRITE;
+/*!40000 ALTER TABLE `result` DISABLE KEYS */;
+/*!40000 ALTER TABLE `result` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `sites`
 --
 
@@ -409,4 +441,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-01 11:19:13
+-- Dump completed on 2017-11-01 11:28:54
