@@ -23,4 +23,6 @@ def userProfile(link):
 	Soup = BeautifulSoup(Data,'lxml')
 	print 'Name : ',Soup.find('h3',{'class':'mlT msB'}).text
 	print 'Institute : ',Soup.find('span',{'itemprop':'name'}).text
+	print 'Language : ',Soup.findAll('li',{'class':'psA plL small bold'})[-1].text
+
 mainRating()
