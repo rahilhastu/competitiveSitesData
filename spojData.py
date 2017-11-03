@@ -31,9 +31,22 @@ def userProfile(link):
 		problemsSolved(Soup)
 
 def problemsSolved(Soup):
+	print '-----------------------------------------------'
 	for contestCode in Soup.findAll('tr'):
-		print contestCode.find('td').text
-		print contestCode.find('a')['href']
+		print '\t',contestCode.find('td').text
+		resultAnswer(contestCode.find('a')['href'])
+
+def resultAnswer(link):
+	url = 'http://www.spoj.com'+link
+	resultData = requests.get(url)
+	res = resultData.text
+	resultSoup = BeautifulSoup(res,'lxml')
+
+	print resultSoup
+
+
+
+
 main()
 
 
