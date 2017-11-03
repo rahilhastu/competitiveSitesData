@@ -33,8 +33,20 @@ def user(link):
 		print "Institute : NA"
 	else:
 		print "Institute : ",re.split('Organization:',userDetails.find('p',{'class':'org_text'}).text)[1]
-	
-	# for users in userDetails.find 
+	print '\tContests'
+	for questionCode in userDetails.find('div',{'id':'display_comp_challenges'}):
+
+		if questionCode.find('span') == -1:
+			continue
+		else:
+			try:
+				print '\t\t',questionCode.find('span').text
+				print '\t\t\tLanguage : ',questionCode.find('div').find('span').text
+			except:
+				pass
+
+
+		# print questionCode.find('div',{'class':''}).find('span')
 
 
 main()
