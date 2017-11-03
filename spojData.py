@@ -1,13 +1,13 @@
 import requests
 import re
 from bs4 import BeautifulSoup
+import mysql.connector
 
 def main():
 	url = "http://www.spoj.com/ranks/users/"
 	r = requests.get(url)
 	data = r.text
 	soup = BeautifulSoup(data,'lxml')
-
 	for data in soup.findAll('tr'):
 		print "Name : ",data.findAll()[3].text
 		print "Rank  : ",data.findAll()[0].text
