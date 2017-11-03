@@ -42,8 +42,9 @@ def resultAnswer(link):
 	res = resultData.text
 	resultSoup = BeautifulSoup(res,'lxml')
 
-	print resultSoup
-
+	for resultStatus in resultSoup.findAll('tr',{'class':'kol1'}):
+		print '\t\t',resultStatus.find('strong').text
+		print '\t\t',resultStatus.find('td',{'class':'slang text-center'}).find('span').text
 
 
 
