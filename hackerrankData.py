@@ -25,4 +25,8 @@ def userProfile(link):
 	print 'Institute : ',Soup.find('span',{'itemprop':'name'}).text
 	print 'Language : ',Soup.findAll('li',{'class':'psA plL small bold'})[-1].text
 
+	for inside in Soup.findAll('div',{'class':'span12 pull-right pjT'}):
+		print inside.prettify()
+			# print questionCode
+
 mainRating()
