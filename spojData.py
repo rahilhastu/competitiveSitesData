@@ -47,8 +47,12 @@ def resultAnswer(link):
 		print '\t\t',resultStatus.find('td',{'class':'slang text-center'}).find('span').text
 
 
-
+conn = mysql.connector.connect(user='root',password='2824',host = '127.0.0.1',
+								database='competitiveDatabase')
+cursor = conn.cursor()
+print cursor.execute("show tables;")
 main()
+conn.close()
 
 
 
