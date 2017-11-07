@@ -155,6 +155,7 @@ ul li {
 }
 .navigation a {
 	color: rgba(255, 255, 255, 0.75);
+	color:#fff;
 	font-size: 13px;
 	font-weight: 700;
 	margin-left: 40px;
@@ -335,7 +336,7 @@ ul li {
 	$intro
 ========================================================================== */
 .intro {
-	background-color: #00aeda;
+	background-color: #d1daba;
 }
 .intro h3 {
 	color: #fff;
@@ -499,7 +500,7 @@ ul li {
 	 Testimonials
 -------------------------------------------------------------------------------*/
 .testimonials {
-	background-color: #00aeda;
+	background-color: #d1daba;
 	position: relative;
 	text-align: center;
 }

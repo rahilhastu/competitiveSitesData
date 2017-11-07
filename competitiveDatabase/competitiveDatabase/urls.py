@@ -19,5 +19,7 @@ from Data import views as homeView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', homeView.home, name='home'),
+    url(r'^$', homeView.homeP, name='home'),
+    url(r'^sites/$', homeView.sites, name='sites'),
+
 ]
