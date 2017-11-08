@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-import MySQLdb
+from Data.models import Result,Questions
 
 def homeP(request):
 
@@ -11,12 +11,10 @@ def homeP(request):
 	return render(request,template,context)
 
 def sites(request):
-	conn = MySQLdb.connect(user='root',password='2824',database='competitiveDatabase')
-	cur = conn.cursor()
-	cur.execute("Select * from sites")
-	conn.close()
-
-	# context = {'site':site}
-	context={}
+	data = Result.objects.all()
+	ques = Questions.objects.all()
+	print data
+	context={"data" : data,
+			 "ques" : ques,}
 	template = 'display_sites.html'
 	return render(request,template,context)

@@ -1,0 +1,74 @@
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Grid Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> -->
+    <link href="{% static 'css/boot.css' %}" rel="stylesheet">
+<!-- <link rel="stylesheet" href="{% static 'css/main.css' %}"> -->
+
+    <!-- Custom styles for this template -->
+       <link href="{% static 'css/dash.css' %}" rel="stylesheet">
+    <link href="{% static 'css/grid.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+  <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">CD</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      </nav>
+    </header>
+    <div class="container">
+        <br><br>
+      <h1>User Data</h1>
+      <h5>This is a place where u will get the details about the users of every site. </h5><br>
+                <div class="table-responsive">
+            
+          <form method="post" action="{% url 'sites' %}">
+            {% csrf_token %}
+              <input type="text" name="username"  size="20" autofocus placeholder="Site"/>             
+              <input type="text" name="username"  size="20" autofocus placeholder="Username"/>             
+              <input type="text" name="username"  size="20" autofocus placeholder="Contest Code"/>             
+              <input type="text" name="username"  size="20" autofocus placeholder="Question Code"/>             
+              <input type="text" name="username"  size="20" autofocus placeholder="Result"/>             
+              <input type="text" name="username"  size="20" autofocus placeholder="Language"/>             
+            <button type="submit" class='btn btn-default' >OK</button>
+          </form>
+
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Site</th>
+                  <th>Username</th>
+                  <th>Contest Code</th>
+                  <th>Question Code</th>
+                  <th>Result</th>
+                  <th>Language</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for x in data %}
+                <tr>
+                  <td>{{ x.id }}</td>
+                  <td>{{ x.site_id }}</td>
+                  <td>{{ x.username }}</td>
+                  <td>{{ x.contest_code }}</td>
+                  <td>{{ x.question_code }}</td>
+                  <td>{{ x.result }}</td>
+                  <td>{{ x.language }}</td>
+                </tr>
+                  {% endfor %}
+  </body>
+</html>
