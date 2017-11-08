@@ -4,7 +4,7 @@ from django import forms
 from django.shortcuts import render
 from Data.models import Result,Questions
 from django.conf import settings
-
+import MySQLdb
 
 def homeP(request):
 
@@ -31,6 +31,7 @@ def sites(request):
 		return render(request,template,context)
 
 	context={"data" : data,}
+	template = 'display_sites.html'
 	
 	return render(request,template,context)
 
