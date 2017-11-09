@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django import forms
 from django.shortcuts import render
-from Data.models import Result,Questions
+from Data.models import Result,Questions,Details,Sites,Users
 from django.conf import settings
 import MySQLdb
 from django.db import connection
@@ -16,12 +16,17 @@ def homeP(request):
 	template = 'homePage.html'
 	return render(request,template,context)
 
-def sites(request):
+def submissions(request):
 	
 	if request.method== 'GET':
-		data = Result.objects.all()
-		context={"data" : data,}
+		sql_sta = "select s.site,r.site_id,r.username,r.id,r.contest_code,r.question_code,r.language,r.result from result as r , sites as s where s.site_id=r.site_id " 
+		ans = cur.execute(sql_sta)
+		data = cur.fetchall()
+		total = len(data)
+		print data
+		context={"data" : data,'total':total,}
 		template = 'display_sites.html'
+		
 		return render(request,template,context)
 		
 	if request.method == 'POST': # If the form has been submitted
@@ -32,15 +37,14 @@ def sites(request):
 		question = str(request.POST['question'])
 		result = str(request.POST['result'])
 		language = str(	request.POST['lang'])	
-		sql = "select * from result where  " 
-		question = ' '+question
-		print question
+		sql = "select s.site,r.site_id,r.username,r.id,r.contest_code,r.question_code,r.language,r.result from result as r , sites as s where s.site_id=r.site_id and "
+		# question =+question
 		def andd(sql):
 			sql +=" and "
 			return sql
 		# print site,username,contest,question,result,language
 		if len(site) != 0:
-			sql+=" site_id = '%s' " %(site)
+			sql+=" r.site_id = '%s' " %(site)
 			s=1
 
 		if len(username) != 0:
@@ -55,7 +59,7 @@ def sites(request):
 			sql+=" contest_code = '%s'" %(contest)
 			c=1
 
-		if len(question) > 1:
+		if len(question) != 0:
 			if c==1 or u==1 or s==1:
 				sql = andd(sql)
 			sql+=" question_code = '%s'" %(question)
@@ -73,14 +77,17 @@ def sites(request):
 			sql+=" language = '%s'" %(language)
 
 		print sql
-		data = Result.objects.raw(sql)
-		# data = Result.objects.filter(site_id=site,username=username,contest_code=contest,question_code=question,result=result,language=language)
-		# query = ("SELECT * FROM Result "
-         # "WHERE username = %s")
-		# data = cur.execute(query,(username))
-
-		context={'data':data}
+		# data = Result.objects.raw(sql)
+		q = cur.execute(sql)
+		data = cur.fetchall()
+		total = len(data)
+		context={'data':data,'total':total,}
 		template = 'display_sites.html'
 		# conn.close()
 		return render(request,template,context)
 
+def ranks(request):
+	if request.method=='GET':
+		context= {}
+		template = 'rank.html'
+		return render(request,template,context)

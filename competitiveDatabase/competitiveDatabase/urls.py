@@ -20,6 +20,7 @@ from Data import views as homeView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', homeView.homeP, name='home'),
-    url(r'^sites/$', homeView.sites, name='sites'),
+    url(r'^submissions/$', homeView.submissions, name='submissions'),
+    url(r'^ranks/$', homeView.ranks, name='ranks'),
 
 ]
