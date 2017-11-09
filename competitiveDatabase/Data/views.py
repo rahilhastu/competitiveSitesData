@@ -25,29 +25,55 @@ def sites(request):
 		return render(request,template,context)
 		
 	if request.method == 'POST': # If the form has been submitted
-		sitee,user,cont,que,res,l=1,1,1,1,1,1
+		s,u,c,q,r=0,0,0,0,0
 		site = str(request.POST['site'])
-		if site=='':
-			sitee=0
 		username = str(request.POST['username'])
-		if username=='':
-			user=0
 		contest = str(request.POST['contest'])	
-		if contest=='':
-			cont=0
 		question = str(request.POST['question'])
-		if question=='':
-			que=0
 		result = str(request.POST['result'])
-		if result=='':
-			res=0
 		language = str(	request.POST['lang'])	
-		if language=='':
-			l=0
-		print site,username,contest,question,result,language
-		sql = "select id,language from result where username = '%s'" %(username)
+		sql = "select * from result where  " 
+		question = ' '+question
+		print question
+		def andd(sql):
+			sql +=" and "
+			return sql
+		# print site,username,contest,question,result,language
+		if len(site) != 0:
+			sql+=" site_id = '%s' " %(site)
+			s=1
+
+		if len(username) != 0:
+			if s==1:
+				sql = andd(sql)
+			sql+=" username = '%s'" %(username)
+			u=1
+
+		if len(contest) != 0:
+			if u==1 or s==1:
+				sql = andd(sql)
+			sql+=" contest_code = '%s'" %(contest)
+			c=1
+
+		if len(question) > 1:
+			if c==1 or u==1 or s==1:
+				sql = andd(sql)
+			sql+=" question_code = '%s'" %(question)
+			q=1
+
+		if len(result) != 0:
+			if q==1 or c==1 or u==1 or s==1:
+				sql = andd(sql)
+			sql+=" result = '%s'" %(result)
+			r = 1
+
+		if len(language) != 0:
+			if r ==1 or q==1 or c==1 or u==1 or s==1:
+				sql = andd(sql)
+			sql+=" language = '%s'" %(language)
+
+		print sql
 		data = Result.objects.raw(sql)
-		print data
 		# data = Result.objects.filter(site_id=site,username=username,contest_code=contest,question_code=question,result=result,language=language)
 		# query = ("SELECT * FROM Result "
          # "WHERE username = %s")
