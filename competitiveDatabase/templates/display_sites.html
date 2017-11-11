@@ -50,7 +50,6 @@
         <br><br>
       <h1>User Data</h1>
       <h5>This is a place where u will get the details about the users of every site <br><p>Total : {{ total }}</p> </h5><br>
-                <div class="table-responsive">
             
           <form method="POST" action="{% url 'submissions' %}">
             {% csrf_token %}
@@ -60,10 +59,11 @@
               <input type="text" name="question"  size="20" autofocus placeholder="Question Code"/>             
               <input type="text" name="result"  size="20" autofocus placeholder="Result"/>             
               <input type="text" name="lang"  size="20" autofocus placeholder="Language"/>             
-            <button type="submit" class='btn btn-default' >OK</button>
+            <button style="margin-left: 40px;" type="submit" class='btn btn-default' >OK</button>
           </form>
 
-            <table class="table table-striped">
+          <div class="table-responsive">
+            <table class="table table-striped ">
               <thead>
                 <tr>
                   <th>Id</th>
@@ -89,5 +89,8 @@
                   <td>{{ x.6 }}</td>
                 </tr>
                   {% endfor %}
+              </tbody>
+            </table>
+          </div>
   </body>
 </html>
