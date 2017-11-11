@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Rankings</title>
+    <title>Ranks</title>
 
     <!-- Bootstrap core CSS -->
     <!-- <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> -->
@@ -17,6 +17,7 @@
     <!-- Custom styles for this template -->
        <link href="{% static 'css/dash.css' %}" rel="stylesheet">
     <link href="{% static 'css/grid.css' %}" rel="stylesheet">
+
   </head>
 
   <body>
@@ -24,17 +25,15 @@
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="{% url 'home' %}">CD</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon">
-        <!-- <a class="navbar" href="{% url 'home' %}">home</a> -->
-          </span>
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link" href="{% url 'submissions' %}">Submissions</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'ranks' %}">Ranks </a>
+            <li class="nav-item ">
+              <a class="nav-link" href="{% url 'ranks' %}">Ranks</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Profile</a>
@@ -45,45 +44,44 @@
           </ul>
         </div>
 
+
       </nav>
     </header>
     <div class="container">
         <br><br>
-      <h1>Rankings</h1>
-      <h5>Ranks of every user on different competitive coding sites </h5><br>
-                <div class="table-responsive">
+      <h1>Ranks</h1>
+      <!-- <h5>This is a place where u will get the details about the users of every site <br><p>Total : {{ total }}</p> </h5><br> -->
             
           <form method="POST" action="{% url 'ranks' %}">
             {% csrf_token %}
-              <input type="text" name="site"  size="20" autofocus placeholder="Site"/>             
-              <input type="text" name="username"  size="20" autofocus placeholder="Username"/>             
-              <input type="text" name="contest"  size="20" autofocus placeholder="Contest Code"/>             
-              <input type="text" name="question"  size="20" autofocus placeholder="Question Code"/>             
-              <input type="text" name="result"  size="20" autofocus placeholder="Result"/>             
-              <input type="text" name="lang"  size="20" autofocus placeholder="Language"/>             
-            <button type="submit" class='btn btn-default' >OK</button>
+              <input style="margin: 5px;" type="text" name="site_id"  size="8" autofocus placeholder="Site_ID"/>             
+              <input style="margin: 5px;" type="text" name="username"  size="20" autofocus placeholder="Username"/>                          
+              <input style="margin: 5px;" type="text" name="institute"  size="20" autofocus placeholder="Institute"/>             
+              <input style="margin: 5px;" type="text" name="country"  size="20" autofocus placeholder="Country"/>             
+            <button style="margin: 30px;" type="submit" class='btn btn-default' >OK</button>
           </form>
-
-            <table class="table table-striped">
-              <thead>
+          <div class="table  table-responsive">
+            <table class="table table-striped table-hover ">
+              <thead >
                 <tr>
                   <th>Site</th>
                   <th>Rank</th>
-                  <th>Username</th>
-                  <th>Institute</th>
+                  <th>Username (Institute)</th>
+                  <th>Country</th>
+    
                 </tr>
               </thead>
               <tbody>
                   {% for x in data %}
                 <tr>
-                  <td>{{ x.id }}</td>
-                  <td>{{ x.site_id }}</td>
-                  <td>{{ x.username }}</td>
-                  <td>{{ x.contest_code }}</td>
-                  <td>{{ x.question_code }}</td>
-                  <td>{{ x.result }}</td>
-                  <td>{{ x.language }}</td>
+                  <td>{{ x.0 }}</td>
+                  <td>{{ x.1 }}</td>
+                  <td><h6><b>{{ x.3 }}</b></h6><br><span style="font-size: 10px;">{{ x.4 }}</span></td>
+                  <td>{{ x.2 }}</td>
                 </tr>
                   {% endfor %}
+              </tbody>
+            </table>
+          </div>
   </body>
 </html>
