@@ -93,8 +93,9 @@ def ranks(request):
 		sql = 'select s.site,d.rank,d.country,d.username,d.institute from details as d, sites as s where s.site_id=d.site_id order by s.site,d.rank '
 		exe = cur.execute(sql)
 		data = cur.fetchall()
+		total= len(data)
 		print data
-		context= {'data':data,}
+		context= {'data':data,'total':total,}
 		template = 'rank.html'
 		return render(request,template,context)
 
@@ -137,8 +138,8 @@ def ranks(request):
 		# data = Result.objects.raw(sql)
 		q = cur.execute(sql)
 		data = cur.fetchall()
-		# total = len(data)
-		context={'data':data,}#'total':total,}
+		total = len(data)
+		context={'data':data,'total':total,}
 		template = 'rank.html'
 		# conn.close()
 		return render(request,template,context)

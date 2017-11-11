@@ -85,10 +85,12 @@ class Details(models.Model):
     country = models.CharField(max_length=50)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'details'
         unique_together = (('site', 'username'), ('site', 'rank'),)
 
+    def __str__(self):
+        return self.username
 
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
@@ -140,10 +142,12 @@ class Questions(models.Model):
     question_code = models.CharField(max_length=100)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'questions'
         unique_together = (('site', 'contest_code', 'question_code'),)
 
+    def __str__(self):
+        return self.contest_code
 
 class Result(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -155,8 +159,11 @@ class Result(models.Model):
     language = models.CharField(max_length=50)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'result'
+
+    def __str__(self):
+        return self.username
 
 
 class Sites(models.Model):
@@ -164,16 +171,21 @@ class Sites(models.Model):
     site = models.CharField(max_length=50)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'sites'
         unique_together = (('site_id', 'site'),)
 
+    def __str__(self):
+        return self.site
 
 class Users(models.Model):
     site = models.ForeignKey(Sites, models.DO_NOTHING, primary_key=True)
     username = models.CharField(max_length=100)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'users'
         unique_together = (('site', 'username'),)
+
+    def __str__(self):
+        return self.username
