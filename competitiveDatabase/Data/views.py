@@ -7,7 +7,7 @@ from django.conf import settings
 import MySQLdb
 from django.db import connection
 
-conn = MySQLdb.connect(user='root',password='2824',database='competitiveDatabase')
+conn = MySQLdb.connect(user='root',password='riakedia',database='competitiveDatabase')
 cur = conn.cursor()
 
 def homeP(request):
