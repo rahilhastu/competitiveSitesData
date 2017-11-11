@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'competitiveDatabase',
         'USER' : 'root',
-        'PASSWORD' : '2824',
+        'PASSWORD' : 'riakedia',
         'HOST' : 'localhost',
         'PORT' : '',
     }
