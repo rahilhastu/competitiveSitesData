@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^$', homeView.homeP, name='home'),
     url(r'^submissions/$', homeView.submissions, name='submissions'),
     url(r'^ranks/$', homeView.ranks, name='ranks'),
+    url(r'^questions/$', homeView.questions, name='questions'),
 
 ]

@@ -5,8 +5,8 @@
  <div class="container">
     <div class="col-md-10 col-md-offset-1">
       <div class="banner-text text-center"> 
-        <h1 style="color:black; border-style:double;">Welcome to the coding information platform</h1>
-        <p style="font-weight: bold; font-size:20px; color :black;">Get every coding site details at one place !</p>
+        <h1 style="color:#ffffff;font-family: courier;">Welcome to the coding information platform</h1>
+        <p style="color:#ffffff;font-weight: bold; font-size:20px;">Get every coding site details at one place !</p>
     <!-- banner text  -->
     </div>
   </div>
@@ -32,8 +32,8 @@
       </div>
       <div class="col-md-4 col-sm-6 services text-center"> <span class="icon icon-briefcase"></span>
         <div class="services-content">
-          <h5>corporate identity</h5>
-          <p>Cras justo </p>
+          <h5><a href = '{% url "questions" %}' style="color:black;">Contests(Questions)</a></h5>
+          <p>Different contests and questions</p>
         </div>
       </div>
       <!--
@@ -86,10 +86,10 @@
           </div>
           <ul class="social-icons clearfix">
             <li><a href="https://www.facebook.com/ria.kedia" class=""><span class="fa fa-facebook"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-twitter"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-linkedin"></span></a></li>
+            <!-- <li><a href="#" class=""><span class="fa fa-twitter"></span></a></li> -->
+            <!-- <li><a href="#" class=""><span class="fa fa-linkedin"></span></a></li> -->
             <li><a href="https://plus.google.com/u/0/115030960031756400816" class=""><span class="fa fa-google-plus"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-dribbble"></span></a></li>
+            <!-- <li><a href="#" class=""><span class="fa fa-dribbble"></span></a></li> -->
           </ul>
         </div>  
       </div>
@@ -102,10 +102,10 @@
           </div>
           <ul class="social-icons clearfix">
             <li><a href="https://www.facebook.com/rahil.hastu" class=""><span class="fa fa-facebook"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-twitter"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-linkedin"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-google-plus"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-dribbble"></span></a></li>
+            <!-- <li><a href="#" class=""><span class="fa fa-twitter"></span></a></li> -->
+            <!-- <li><a href="#" class=""><span class="fa fa-linkedin"></span></a></li> -->
+            <li><a href="https://plus.google.com/u/0/+RahilHastu" class=""><span class="fa fa-google-plus"></span></a></li>
+            <!-- <li><a href="#" class=""><span class="fa fa-dribbble"></span></a></li> -->
           </ul>
         </div>
       </div>
@@ -122,32 +122,40 @@
           <li>
             <div class="col-md-12">
               <blockquote>
-                <h1>"Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec sed odio dui. Phasellus non dolor nibh. Nullam elementum Aenean eu leo quam..." </h1>
-                <p>Rene Brown, Open Window production</p>
+                <h3 style="text-align: center;color: #ffffff;">Top users from different sites</h3>
+                {% for x in data4 %}
+                  <p>{{ x.0 }} : {{ x.1 }} ,{{ x.2 }} </p>
+                {% endfor %}
               </blockquote>
             </div>
           </li>
           <li>
             <div class="col-md-12">
               <blockquote>
-                <h1>"Cras dictum tellus dui, vitae sollicitudin ipsum. Phasellus non dolor nibh. Nullam elementum tellus pretium feugiat shasellus non dolor nibh. Nullam elementum tellus pretium feugiat." </h1>
-                <p>Brain Rice, Lexix Private Limited.</p>
+                <h3 style="text-align: center;color: #ffffff;">Codechef top users</h3>
+                {% for x in data1 %}
+                  <p>{{ x.0 }} {{ x.1 }} ,{{ x.2 }} </p>
+                {% endfor %}
               </blockquote>
             </div>
           </li>
           <li>
             <div class="col-md-12">
               <blockquote>
-                <h1>"Cras mattis consectetur purus sit amet fermentum. Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur...." </h1>
-                <p>Andi Simond, Global Corporate Inc</p>
+                <h3 style="text-align: center;color: #ffffff;">Spoj</h3>
+                {% for x in data2 %}
+                  <p>{{ x.0 }} {{ x.1 }} ,{{ x.2 }} </p>
+                {% endfor %}
               </blockquote>
             </div>
           </li>
           <li>
             <div class="col-md-12">
               <blockquote>
-                <h1>"Lorem ipsum dolor sit amet, consectetur adipiscing elitPhasellus non dolor nibh. Nullam elementum tellus pretium feugiat. Cras dictum tellus dui sollcitudin." </h1>
-                <p>Kristy Gabbor, Martix Media</p>
+                <h3 style="text-align: center;color: #ffffff;">Coderbyte</h3>
+               {% for x in data3 %}
+                  <p>{{ x.0 }} {{ x.1 }} ,{{ x.2 }} </p>
+                {% endfor %}
               </blockquote>
             </div>
           </li>
