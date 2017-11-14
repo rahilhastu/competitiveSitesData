@@ -39,7 +39,7 @@ def users(request):
 		context={"data" : data,'total':total,}
 		template = 'users.html'
 
-		return render(request,template,context)
+		# return render(request,template,context)
 		
 	if request.method == 'POST': # If the form has been submitted
 		s,u,c,q,r=0,0,0,0,0
@@ -98,7 +98,8 @@ def users(request):
 		context={'data':data,'total':total,}
 		template = 'users.html'
 		# conn.close()
-		return render(request,template,context)
+	
+	return render(request,template,context)
 
 def ranks(request):
 	if request.method=='GET':
@@ -110,7 +111,7 @@ def ranks(request):
 		# print data
 		context= {'data':data,'total':total,}
 		template = 'rank.html'
-		return render(request,template,context)
+		# return render(request,template,context)
 
 	if request.method=="POST":
 		s,u,i=0,0,0
@@ -155,7 +156,8 @@ def ranks(request):
 		context={'data':data,'total':total,}
 		template = 'rank.html'
 		# conn.close()
-		return render(request,template,context)
+
+	return render(request,template,context)
 
 def questions(request):
 	if request.method=='GET':
@@ -166,7 +168,7 @@ def questions(request):
 		# print data
 		context= {'data':data,'total':total,}
 		template = 'question.html'
-		return render(request,template,context)
+		# return render(request,template,context)
 
 	if request.method=="POST":
 		s,u,i=0,0,0
@@ -203,4 +205,5 @@ def questions(request):
 		context={'data':data,'total':total,}
 		template = 'question.html'
 		# conn.close()
-		return render(request,template,context)
+
+	return render(request,template,context)
