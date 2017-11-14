@@ -6,14 +6,18 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
+          {% url 'users' as users %}
+          {% url 'ranks' as ranks %}
+          {% url 'questions' as questions %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'users' %}">Users</a>
+            <a {% if request.path == users %} style="color: #D7C30F" {% endif %} class="nav-link" href="{% url 'users' %}">Users</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="{% url 'ranks' %}">Ranks</a>
+            <a {% if request.path == ranks %} style="color: #D7C30F" {% endif %} class="nav-link " href="{% url 'ranks' %}">Ranks</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="{% url 'questions' %}">Questions</a>
+            <a {% if request.path == questions %} style="color: #D7C30F" {% endif %} class="nav-link " href="{% url 'questions' %}">Questions</a>
           </li>
+          
       </div>
     </nav>
