@@ -77,8 +77,8 @@ class AuthUserUserPermissions(models.Model):
 
 
 class Details(models.Model):
-    site = models.ForeignKey('Users', models.DO_NOTHING)
-    username = models.ForeignKey('Users', models.DO_NOTHING, db_column='username')
+    site = models.ForeignKey('Users', models.DO_NOTHING, primary_key=True,related_name="custom_sites")
+    username = models.ForeignKey('Users', models.DO_NOTHING, db_column='username',null=True,related_name="custom_username")
     name = models.CharField(max_length=100)
     rank = models.IntegerField()
     institute = models.CharField(max_length=100)
@@ -87,7 +87,7 @@ class Details(models.Model):
     class Meta:
         managed = False
         db_table = 'details'
-        unique_together = (('site', 'username'),)
+        unique_together = (('site', 'username'), ('site', 'username', 'rank'),)
 
 
 class DjangoAdminLog(models.Model):
@@ -149,8 +149,8 @@ class Result(models.Model):
     id = models.BigAutoField(primary_key=True)
     site = models.ForeignKey(Questions, models.DO_NOTHING)
     username = models.ForeignKey('Users', models.DO_NOTHING, db_column='username')
-    contest_code = models.ForeignKey(Questions, models.DO_NOTHING, db_column='contest_code')
-    question_code = models.ForeignKey(Questions, models.DO_NOTHING, db_column='question_code')
+    contest_code = models.ForeignKey(Questions, models.DO_NOTHING, db_column='contest_code',related_name="custom_contest")
+    question_code = models.ForeignKey(Questions, models.DO_NOTHING, db_column='question_code',related_name="custom_question")
     result = models.CharField(max_length=50)
     language = models.CharField(max_length=50)
 

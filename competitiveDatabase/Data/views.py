@@ -28,16 +28,16 @@ def homeP(request):
 	template = 'homePage.html'
 	return render(request,template,context)
 
-def submissions(request):
+def users(request):
 	
 	if request.method== 'GET':
-		sql_sta = "select s.site,r.site_id,r.username,r.id,r.contest_code,r.question_code,r.language,r.result from result as r , sites as s where s.site_id=r.site_id order by r.id asc" 
+		sql_sta = "select s.site,r.site_id,r.username,r.id,r.contest_code,r.question_code,r.language,r.result from result as r , sites as s where s.site_id=r.site_id order by r.id asc " 
 		ans = cur.execute(sql_sta)
 		data = cur.fetchall()
 		total = len(data)
 		# print data
 		context={"data" : data,'total':total,}
-		template = 'display_sites.html'
+		template = 'users.html'
 
 		return render(request,template,context)
 		
@@ -96,13 +96,14 @@ def submissions(request):
 		data = cur.fetchall()
 		total = len(data)
 		context={'data':data,'total':total,}
-		template = 'display_sites.html'
+		template = 'users.html'
 		# conn.close()
 		return render(request,template,context)
 
 def ranks(request):
 	if request.method=='GET':
 		sql = 'select s.site,d.rank,d.country,d.username,d.institute from details as d, sites as s where s.site_id=d.site_id order by s.site,d.rank '
+		# testdata = Details.objects.raw(sql, [])
 		exe = cur.execute(sql)
 		data = cur.fetchall()
 		total= len(data)

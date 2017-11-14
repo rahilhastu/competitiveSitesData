@@ -10,6 +10,15 @@ from __future__ import unicode_literals
 from django.db import models
 
 
+class Admin(models.Model):
+    username = models.CharField(primary_key=True, max_length=40)
+    password = models.CharField(max_length=40)
+
+    class Meta:
+        managed = False
+        db_table = 'admin'
+
+
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=80)
 
@@ -77,20 +86,18 @@ class AuthUserUserPermissions(models.Model):
 
 
 class Details(models.Model):
-    site = models.ForeignKey('Users', models.DO_NOTHING,related_name="details_site", primary_key=True)
-    username = models.CharField(max_length=100)
+    site = models.ForeignKey('Users', models.DO_NOTHING, primary_key=True,related_name="custom_sites")
+    username = models.ForeignKey('Users', models.DO_NOTHING, db_column='username')
     name = models.CharField(max_length=100)
     rank = models.IntegerField()
     institute = models.CharField(max_length=100)
     country = models.CharField(max_length=50)
 
     class Meta:
-        # managed = False
+        managed = False
         db_table = 'details'
-        unique_together = (('site', 'username'), ('site', 'rank'),)
+        unique_together = (('site', 'username'), ('site', 'username', 'rank'),)
 
-    def __str__(self):
-        return self.username
 
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
@@ -142,28 +149,23 @@ class Questions(models.Model):
     question_code = models.CharField(max_length=100)
 
     class Meta:
-        # managed = False
+        managed = False
         db_table = 'questions'
         unique_together = (('site', 'contest_code', 'question_code'),)
 
-    def __str__(self):
-        return self.contest_code
 
 class Result(models.Model):
     id = models.BigAutoField(primary_key=True)
     site = models.ForeignKey(Questions, models.DO_NOTHING)
-    username = models.CharField(max_length=100)
-    contest_code = models.CharField(max_length=100)
-    question_code = models.CharField(max_length=100)
+    username = models.ForeignKey('Users', models.DO_NOTHING, db_column='username')
+    contest_code = models.ForeignKey(Questions, models.DO_NOTHING, db_column='contest_code',related_name="custom_contest")
+    question_code = models.ForeignKey(Questions, models.DO_NOTHING, db_column='question_code',related_name="custom_question")
     result = models.CharField(max_length=50)
     language = models.CharField(max_length=50)
 
     class Meta:
-        # managed = False
+        managed = False
         db_table = 'result'
-
-    def __str__(self):
-        return self.username
 
 
 class Sites(models.Model):
@@ -171,21 +173,16 @@ class Sites(models.Model):
     site = models.CharField(max_length=50)
 
     class Meta:
-        # managed = False
+        managed = False
         db_table = 'sites'
         unique_together = (('site_id', 'site'),)
 
-    def __str__(self):
-        return self.site
 
 class Users(models.Model):
     site = models.ForeignKey(Sites, models.DO_NOTHING, primary_key=True)
     username = models.CharField(max_length=100)
 
     class Meta:
-        # managed = False
+        managed = False
         db_table = 'users'
         unique_together = (('site', 'username'),)
-
-    def __str__(self):
-        return self.username

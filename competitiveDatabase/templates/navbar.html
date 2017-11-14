@@ -1,15 +1,19 @@
-<section class="banner" role="banner">
-  <header id="header">
-    <div class="header-content clearfix"> <a class="logo" href="{% url 'home' %}" style="color:#80D941; ">Home</a>
-      <nav class="navigation" role="navigation">
-        <ul class="primary-nav">
-          <li><a href="#services" style="color: #80D941;letter-spacing: 2px;font-size: 13px;">Services</a></li>
-          <li><a href="#intro" style="color: #80D941;letter-spacing: 2px;font-size: 13px;">About</a></li>
-          <!-- <li><a href="#works">Works</a></li> -->
-          <li><a href="#teams" style="color: #80D941;letter-spacing: 2px;font-size: 13px; ">Our Team</a></li>
-          <li><a href="#testimonials" style="color: #80D941;letter-spacing: 2px;font-size: 13px;">Testimonials</a></li>
-          <!-- <li><a href="#contact">Contact</a></li> -->
-        </ul>
-      </nav>
-      <a href="#" class="nav-toggle">Menu<span></span></a> </div>
-  </header>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users' %}">Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'ranks' %}">Ranks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'questions' %}">Questions</a>
+          </li>
+      </div>
+    </nav>

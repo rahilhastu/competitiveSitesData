@@ -20,38 +20,14 @@
   </head>
 
   <body>
-  <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}">Home</a>
-        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'submissions' %}">Submissions</a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="{% url 'ranks' %}">Ranks</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'questions' %}">Questions</a>
-            </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="#">Help</a>
-            </li> -->
-          </ul>
-        </div>
+{% include 'navbar.html' %}
 
-
-      </nav>
-    </header>
     <div class="container">
         <br><br>
       <h1>User Data</h1>
-      <h5>This is a place where u will get the details about the users of every site <br><p>Total : {{ total }}</p> </h5><br>
+      <h5>This is a place where u will get the details about the users of every site <br><p>Total : {{ total }} </p> </h5><br>
             
-          <form method="POST" action="{% url 'submissions' %}">
+          <form method="POST" action="{% url 'users' %}">
             {% csrf_token %}
               <input type="text" name="site"  size="20" autofocus placeholder="Site_ID"/>             
               <input type="text" name="username"  size="20" autofocus placeholder="Username"/>             

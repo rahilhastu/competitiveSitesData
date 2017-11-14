@@ -21,33 +21,9 @@
   </head>
 
   <body>
-  <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}">Home</a>
-        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'submissions' %}">Submissions</a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="{% url 'ranks' %}">Ranks</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'questions' %}">Questions</a>
-            </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="#">Help</a>
-            </li> -->
-          </ul>
-        </div>
+  {% include 'navbar.html' %}
 
-
-      </nav>
-    </header>
-    <div class="container">
+ <div class="container">
         <br><br>
       <h1>Ranks</h1>
       <h5>This is a place where u will get the Ranks of Users on different Competitive Sites <br><p>Total : {{ total }}</p> </h5><br>
@@ -56,8 +32,14 @@
             {% csrf_token %}
               <input style="margin: 5px;" type="text" name="site_id"  size="8" autofocus placeholder="Site_ID"/>             
               <input style="margin: 5px;" type="text" name="username"  size="20" autofocus placeholder="Username"/>                          
-              <input style="margin: 5px;" type="text" name="institute"  size="20" autofocus placeholder="Institute"/>             
-              <input style="margin: 5px;" type="text" name="country"  size="20" autofocus placeholder="Country"/>             
+              <input style="margin: 5px;" type="text" name="institute"  size="20" autofocus placeholder="Institute" />
+              <!-- <select name ='institute'> -->
+              <!-- {% for x in data %} -->
+                <!-- <option value="{{ x.4 }}">{{ x.4 }}</option> -->
+              <!-- {% endfor %} -->
+                
+              </select>
+              <input style="margin: 5px;" type="text" name="country"  size="20" autofocus placeholder="Country"/>  
             <button style="margin: 30px;" type="submit" class='btn btn-default' >OK</button>
           </form>
           <div class="table  table-responsive">
