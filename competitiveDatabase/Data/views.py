@@ -6,6 +6,7 @@ from Data.models import Result,Questions,Details,Sites,Users
 from django.conf import settings
 import MySQLdb
 from django.db import connection
+from .forms import loggedIn
 
 conn = MySQLdb.connect(user='root',password='2824',database='competitiveDatabase')
 cur = conn.cursor()
@@ -206,4 +207,15 @@ def questions(request):
 		template = 'question.html'
 		# conn.close()
 
+	return render(request,template,context)
+
+def log(request):
+	form = loggedIn(request.POST or None)
+
+	if form.is_valid():
+		print request.POST
+
+	context={
+	}
+	template = 'login.html'
 	return render(request,template,context)

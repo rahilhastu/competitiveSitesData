@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<style type="text/css">
+.space{
+  margin: 20px ;
+}
+  
+</style>
+ <div class="container">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="banner-text text-center"> 
+        <h1 style="color:#ffffff;font-family: courier;">Admin Login</h1>
+    <!-- banner text  -->
+          <form class="login" method="POST" action="#">
+  {% csrf_token %}
+              <input type="text" name="username"  size="40" autofocus placeholder="username" class="space" /><br>             
+              <input type="password" name="password"  size="40" autofocus placeholder="Password"/><br>  
+  <button class="primaryAction space btn btn-default" style="color: #ffffff;" type="submit">Sign In</button>
+</form>
+        <p style="color:#ffffff;font-weight: bold; font-size:10px;">Admin can Insert and Update</p>
+</div>
+
+    </div>
+  </div>
+{% endblock %}
