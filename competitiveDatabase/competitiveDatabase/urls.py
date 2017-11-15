@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 from Data import views as homeView
-# from admin import views as adminView
+from admin import views as adminView
 from django.contrib.auth.views import login
 # from Data import ur
 
@@ -28,5 +28,7 @@ urlpatterns = [
     url(r'^questions/$', homeView.questions, name='questions'),
     url(r'^login/$', homeView.login,name='login'),
     url(r'^logout/$', homeView.logout,name='logout'),
+    # url(r'^insert/$', adminView.logout,name='update'),
+    url(r'^alter/$', adminView.alter,name='alter'),
 
 ]

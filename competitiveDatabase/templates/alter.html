@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <style type="text/css">
   .s{
     size: 10px !important;
@@ -10,10 +9,10 @@
   <div class="col-md-10 col-md-offset-1">
     <div class="banner-text text-center">
     {% if error %}
-    <h1 class="s"> <font size="6">{{ error }}</font> </h1>
+    <h1 class="s"> {{ error }} </h1>
       <p>Your username or password did not match. Please try again.</p>
     {% endif %}  
-    <h1 class='size'><font size="10">Admin Login</font></h1>
+    <h1 style="font-stretch: expanded;"><font size="6">Update the Database</font></h1>
   
   <form method="post" action="">
       {% csrf_token %}
