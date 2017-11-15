@@ -9,6 +9,10 @@
           <li><a href="{% url 'home' %}#teams" style="color: #80D941;letter-spacing: 2px;font-size: 13px; ">Our Team</a></li>
           <li><a href="{% url 'home' %}#testimonials" style="color: #80D941;letter-spacing: 2px;font-size: 13px;">Testimonials</a></li>
           <!-- <li><a href="#contact">Contact</a></li> -->
+          {% if username %}
+          <a href="#" style="color: #80D941;letter-spacing: 2px;font-size: 13px;">Alter</a></li>
+          {% endif %}
+          <li>
         </ul>
       </nav>
       <a href="#" class="nav-toggle">Menu<span></span></a> </div>

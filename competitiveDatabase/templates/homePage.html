@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% block content %}
 
+
  <div class="container">
     <div class="col-md-10 col-md-offset-1">
       <div class="banner-text text-center"> 
@@ -175,7 +176,14 @@
           <h5>College</h5>
           <p>PESIT South Campus,560100<br>
             9469321919 / 7008126758<br>
-            rahilhastu@gmail.com<a href="{% url 'log' %}" style="color:#ffffff;font-size: 9px;margin-left: 5px;">(LogIn)</a><br>
+            rahilhastu@gmail.com
+            {% if username %}
+            <a href="{% url 'logout' %}" style="color:#ffffff;font-size: 9px;margin-left: 5px;">(Logout)
+            </a><br>
+            {% else %}
+            <a href="{% url 'login' %}" style="color:#ffffff;font-size: 9px;margin-left: 5px;">(LogIn)
+            </a><br>
+            {% endif %}
             r.kedia58@gmail.com</p>
           <p>Copyright © 2017</p>
       </div>

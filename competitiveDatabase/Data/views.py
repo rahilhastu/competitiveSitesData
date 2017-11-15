@@ -7,27 +7,33 @@ from django.conf import settings
 import MySQLdb
 from django.db import connection
 from .forms import loggedIn
+from django.http import HttpResponseRedirect
+from django.contrib import auth
 
 conn = MySQLdb.connect(user='root',password='2824',database='competitiveDatabase')
 cur = conn.cursor()
 
 def homeP(request):
 
-	sql1 = "select d.rank,d.name,d.country from details as d ,sites as s where s.site_id=d.site_id and s.site_id=1 and d.rank<4 order by d.rank"
-	sql2 = "select d.rank,d.name,d.country from details as d ,sites as s where s.site_id=d.site_id and s.site_id=2 and d.rank<4 order by d.rank"
-	sql3 = "select d.rank,d.name,d.country from details as d ,sites as s where s.site_id=d.site_id and s.site_id=3 and d.rank<4 order by d.rank"
-	sql4 = "select s.site,d.name,d.country from details d,sites s where s.site_id=d.site_id and d.rank=1 "
-	q = cur.execute(sql1)
-	data1 = cur.fetchall()
-	p = cur.execute(sql2)
-	data2 = cur.fetchall()
-	r = cur.execute(sql3)
-	data3 = cur.fetchall()
-	s = cur.execute(sql4)
-	data4 = cur.fetchall()
-	context = {'data1':data1,'data2':data2,'data3':data3,'data4':data4,}
-	template = 'homePage.html'
-	return render(request,template,context)
+	if request.method=="GET":
+		sql1 = "select d.rank,d.name,d.country from details as d ,sites as s where s.site_id=d.site_id and s.site_id=1 and d.rank<4 order by d.rank"
+		sql2 = "select d.rank,d.name,d.country from details as d ,sites as s where s.site_id=d.site_id and s.site_id=2 and d.rank<4 order by d.rank"
+		sql3 = "select d.rank,d.name,d.country from details as d ,sites as s where s.site_id=d.site_id and s.site_id=3 and d.rank<4 order by d.rank"
+		sql4 = "select s.site,d.name,d.country from details d,sites s where s.site_id=d.site_id and d.rank=1 "
+		q = cur.execute(sql1)
+		data1 = cur.fetchall()
+		p = cur.execute(sql2)
+		data2 = cur.fetchall()
+		r = cur.execute(sql3)
+		data3 = cur.fetchall()
+		s = cur.execute(sql4)
+		data4 = cur.fetchall()
+		username=None
+		if request.session.has_key('username'):
+			username = request.session['username']
+		context = {'data1':data1,'data2':data2,'data3':data3,'data4':data4,'username':username}
+		template = 'homePage.html'
+		return render(request,template,context)
 
 def users(request):
 	
@@ -209,13 +215,74 @@ def questions(request):
 
 	return render(request,template,context)
 
-def log(request):
-	form = loggedIn(request.POST or None)
+def login(request):
 
-	if form.is_valid():
-		print request.POST
+	if request.method=='GET':
+		template = 'login.html'
+		context ={}
 
-	context={
-	}
-	template = 'login.html'
+	if request.method=="POST":
+		username= str(request.POST['username'])
+		password = str(request.POST['password'])	
+
+		sql = "select username,password from admin where username ='%s'"%(username) + " and password = '%s'"%(password)
+		print sql
+		q = cur.execute(sql)
+		data = cur.fetchall()
+		print data
+
+		if len(data) ==1:
+			print "User authenticated"
+			template='homePage.html'
+			request.session['username']=username
+			context = {'username':username}
+
+		else:
+			print "User not authenticated"
+			template = 'login.html'
+			notAuthenticated = 'Not authenticated'
+			context={"error":notAuthenticated}
+
+		print username + " - " + password
+
 	return render(request,template,context)
+
+def logout(request):
+
+	if request.method=='GET':
+		try:
+			del request.session['username']
+		except:
+			pass
+
+		template = 'homePage.html'
+		context={}
+		return render(request,template,context)
+
+	if request.method=="POST":
+		username= str(request.POST['username'])
+		password = str(request.POST['password'])	
+
+		sql = "select username,password from admin where username ='%s'"%(username) + " and password = '%s'"%(password)
+		print sql
+		q = cur.execute(sql)
+		data = cur.fetchall()
+		print data
+
+		if len(data) ==1:
+			print "User authenticated"
+			template='homePage.html'
+			request.session['username']=username
+			context = {'username':username}
+
+		else:
+			print "User not authenticated"
+			template = 'login.html'
+			notAuthenticated = 'Not authenticated'
+			context={"error":notAuthenticated}
+
+		print username + " - " + password
+
+		return render(request,template,context)
+		
+	

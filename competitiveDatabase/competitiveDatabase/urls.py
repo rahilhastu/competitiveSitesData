@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^users/$', homeView.users, name='users'),
     url(r'^ranks/$', homeView.ranks, name='ranks'),
     url(r'^questions/$', homeView.questions, name='questions'),
-    url(r'accounts/login/', homeView.log,name='log'),
-
+    url(r'^login/$', homeView.login,name='login'),
+    url(r'^logout/$', homeView.logout,name='logout'),
 
 ]
