@@ -1,15 +1,19 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.http import HttpResponse
 
 # Create your views here.
-# @login_required
 def alter(request):
+	username=None
+	if request.session.has_key('username'):
+		username = request.session['username']
 	if request.method=='GET':
-		username=None
-		if request.session.has_key('username'):
-			username = request.session['username']
-		template = 'alter.html'
-		context={'username':username}
-		return render(request,template,context)
+		if username==None:
+			context={'err':'You need to Login'}
+			template='alter.html'
+			return render(request,template,context)
+		else:
+			template = 'alter.html'
+			context={'username':username}
+			return render(request,template,context)
