@@ -2,28 +2,33 @@
 {% block content %}
 <style type="text/css">
   .s{
-    size: 10px !important;
-    font-size:20px !important;
+    color: #ffffff;
   }
 </style>
 <div class="container">
   <div class="col-md-10 col-md-offset-1">
     <div class="banner-text text-center">
     {% if error %}
-    <h1 class="s"> {{ error }} </h1>
+    <h1> {{ error }} </h1>
       <p>Your username or password did not match. Please try again.</p>
     {% endif %} 
     {% if err %}
     <h1 style="font-size:30px;" > {{ err }} </h1>
       <p><b><a href="{% url 'login' %}">Login</a> to proceed</b></p>
     {% else %}  
-    <h1 style="font-stretch: expanded;"><font size="6">Update the Database</font></h1>
+    <h5 style="font-size:30px;color: #ffffff;margin-bottom: 30px;">Add User</h5>
   
   <form method="post" action="">
       {% csrf_token %}
-     <input style="margin: 5px;" type="text" name="username"  size="30" autofocus placeholder="Username"/><br>             
-      <input style="margin: 5px;" type="password" name="password"  size="30 " autofocus placeholder="Password"/>  <br>
-      <button style="margin: 30px;" type="submit" class='btn btn-default' >Login</button>
+      <input type="radio" name="Site" autofocus placeholder="codechef" checked> codechef           
+      <input type="radio" name="Site" value="spoj" > Spoj             
+      <input type="radio" name="Site" value="coderbyte" >Coderbyte<br><br>
+      <input style="margin: 5px;" type="text" name="username"  size="30 " autofocus placeholder="Username"/>  <br>
+      <input style="margin: 5px;" type="text" name="name"  size="30 " autofocus placeholder="Name"/>  <br>
+      <input style="margin: 5px;" type="text" name="rank"  size="30 " autofocus placeholder="Rank"/>  <br>
+      <input style="margin: 5px;" type="text" name="institute"  size="30 " autofocus placeholder="Institute"/>  <br>
+      <input style="margin: 5px;" type="text" name="country"  size="30 " autofocus placeholder="Country"/>  <br>
+      <button style="margin: 30px;" type="submit" class='btn btn-default' >Add User</button>
   </form>
   {% endif %}
 </div>
