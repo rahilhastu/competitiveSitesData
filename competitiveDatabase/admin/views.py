@@ -28,4 +28,4 @@ def alter(request):
 		rank = str(request.POST['rank'])	
 		institute = str(request.POST['institute'])
 		country = str(request.POST['country'])
-
+		
