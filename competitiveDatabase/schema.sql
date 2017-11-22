@@ -40,58 +40,6 @@ INSERT INTO `admin` VALUES ('admin','admin');
 UNLOCK TABLES;
 
 --
--- Table structure for table `auth_group`
---
-
-DROP TABLE IF EXISTS `auth_group`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `auth_group` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(80) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `auth_group`
---
-
-LOCK TABLES `auth_group` WRITE;
-/*!40000 ALTER TABLE `auth_group` DISABLE KEYS */;
-/*!40000 ALTER TABLE `auth_group` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `auth_group_permissions`
---
-
-DROP TABLE IF EXISTS `auth_group_permissions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `auth_group_permissions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `group_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `auth_group_permissions_group_id_permission_id_0cd325b0_uniq` (`group_id`,`permission_id`),
-  KEY `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` (`permission_id`),
-  CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
-  CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `auth_group_permissions`
---
-
-LOCK TABLES `auth_group_permissions` WRITE;
-/*!40000 ALTER TABLE `auth_group_permissions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `auth_group_permissions` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `auth_permission`
 --
 
@@ -106,7 +54,7 @@ CREATE TABLE `auth_permission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +63,7 @@ CREATE TABLE `auth_permission` (
 
 LOCK TABLES `auth_permission` WRITE;
 /*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
-INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can add group',2,'add_group'),(5,'Can change group',2,'change_group'),(6,'Can delete group',2,'delete_group'),(7,'Can add permission',3,'add_permission'),(8,'Can change permission',3,'change_permission'),(9,'Can delete permission',3,'delete_permission'),(10,'Can add user',4,'add_user'),(11,'Can change user',4,'change_user'),(12,'Can delete user',4,'delete_user'),(13,'Can add content type',5,'add_contenttype'),(14,'Can change content type',5,'change_contenttype'),(15,'Can delete content type',5,'delete_contenttype'),(16,'Can add session',6,'add_session'),(17,'Can change session',6,'change_session'),(18,'Can delete session',6,'delete_session'),(19,'Can add auth group',7,'add_authgroup'),(20,'Can change auth group',7,'change_authgroup'),(21,'Can delete auth group',7,'delete_authgroup'),(22,'Can add auth group permissions',8,'add_authgrouppermissions'),(23,'Can change auth group permissions',8,'change_authgrouppermissions'),(24,'Can delete auth group permissions',8,'delete_authgrouppermissions'),(25,'Can add auth permission',9,'add_authpermission'),(26,'Can change auth permission',9,'change_authpermission'),(27,'Can delete auth permission',9,'delete_authpermission'),(28,'Can add auth user',10,'add_authuser'),(29,'Can change auth user',10,'change_authuser'),(30,'Can delete auth user',10,'delete_authuser'),(31,'Can add auth user groups',11,'add_authusergroups'),(32,'Can change auth user groups',11,'change_authusergroups'),(33,'Can delete auth user groups',11,'delete_authusergroups'),(34,'Can add auth user user permissions',12,'add_authuseruserpermissions'),(35,'Can change auth user user permissions',12,'change_authuseruserpermissions'),(36,'Can delete auth user user permissions',12,'delete_authuseruserpermissions'),(37,'Can add details',13,'add_details'),(38,'Can change details',13,'change_details'),(39,'Can delete details',13,'delete_details'),(40,'Can add django admin log',14,'add_djangoadminlog'),(41,'Can change django admin log',14,'change_djangoadminlog'),(42,'Can delete django admin log',14,'delete_djangoadminlog'),(43,'Can add django content type',15,'add_djangocontenttype'),(44,'Can change django content type',15,'change_djangocontenttype'),(45,'Can delete django content type',15,'delete_djangocontenttype'),(46,'Can add django migrations',16,'add_djangomigrations'),(47,'Can change django migrations',16,'change_djangomigrations'),(48,'Can delete django migrations',16,'delete_djangomigrations'),(49,'Can add django session',17,'add_djangosession'),(50,'Can change django session',17,'change_djangosession'),(51,'Can delete django session',17,'delete_djangosession'),(52,'Can add result',18,'add_result'),(53,'Can change result',18,'change_result'),(54,'Can delete result',18,'delete_result'),(55,'Can add sites',19,'add_sites'),(56,'Can change sites',19,'change_sites'),(57,'Can delete sites',19,'delete_sites'),(58,'Can add users',20,'add_users'),(59,'Can change users',20,'change_users'),(60,'Can delete users',20,'delete_users'),(61,'Can add questions',21,'add_questions'),(62,'Can change questions',21,'change_questions'),(63,'Can delete questions',21,'delete_questions');
+INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can add group',2,'add_group'),(5,'Can change group',2,'change_group'),(6,'Can delete group',2,'delete_group'),(7,'Can add permission',3,'add_permission'),(8,'Can change permission',3,'change_permission'),(9,'Can delete permission',3,'delete_permission'),(10,'Can add user',4,'add_user'),(11,'Can change user',4,'change_user'),(12,'Can delete user',4,'delete_user'),(13,'Can add content type',5,'add_contenttype'),(14,'Can change content type',5,'change_contenttype'),(15,'Can delete content type',5,'delete_contenttype'),(16,'Can add session',6,'add_session'),(17,'Can change session',6,'change_session'),(18,'Can delete session',6,'delete_session'),(19,'Can add auth group',7,'add_authgroup'),(20,'Can change auth group',7,'change_authgroup'),(21,'Can delete auth group',7,'delete_authgroup'),(22,'Can add auth group permissions',8,'add_authgrouppermissions'),(23,'Can change auth group permissions',8,'change_authgrouppermissions'),(24,'Can delete auth group permissions',8,'delete_authgrouppermissions'),(25,'Can add auth permission',9,'add_authpermission'),(26,'Can change auth permission',9,'change_authpermission'),(27,'Can delete auth permission',9,'delete_authpermission'),(28,'Can add auth user',10,'add_authuser'),(29,'Can change auth user',10,'change_authuser'),(30,'Can delete auth user',10,'delete_authuser'),(31,'Can add auth user groups',11,'add_authusergroups'),(32,'Can change auth user groups',11,'change_authusergroups'),(33,'Can delete auth user groups',11,'delete_authusergroups'),(34,'Can add auth user user permissions',12,'add_authuseruserpermissions'),(35,'Can change auth user user permissions',12,'change_authuseruserpermissions'),(36,'Can delete auth user user permissions',12,'delete_authuseruserpermissions'),(37,'Can add details',13,'add_details'),(38,'Can change details',13,'change_details'),(39,'Can delete details',13,'delete_details'),(40,'Can add django admin log',14,'add_djangoadminlog'),(41,'Can change django admin log',14,'change_djangoadminlog'),(42,'Can delete django admin log',14,'delete_djangoadminlog'),(43,'Can add django content type',15,'add_djangocontenttype'),(44,'Can change django content type',15,'change_djangocontenttype'),(45,'Can delete django content type',15,'delete_djangocontenttype'),(46,'Can add django migrations',16,'add_djangomigrations'),(47,'Can change django migrations',16,'change_djangomigrations'),(48,'Can delete django migrations',16,'delete_djangomigrations'),(49,'Can add django session',17,'add_djangosession'),(50,'Can change django session',17,'change_djangosession'),(51,'Can delete django session',17,'delete_djangosession'),(52,'Can add result',18,'add_result'),(53,'Can change result',18,'change_result'),(54,'Can delete result',18,'delete_result'),(55,'Can add sites',19,'add_sites'),(56,'Can change sites',19,'change_sites'),(57,'Can delete sites',19,'delete_sites'),(58,'Can add users',20,'add_users'),(59,'Can change users',20,'change_users'),(60,'Can delete users',20,'delete_users'),(61,'Can add questions',21,'add_questions'),(62,'Can change questions',21,'change_questions'),(63,'Can delete questions',21,'delete_questions'),(64,'Can add admin',22,'add_admin'),(65,'Can change admin',22,'change_admin'),(66,'Can delete admin',22,'delete_admin'),(67,'Can add site',23,'add_site'),(68,'Can change site',23,'change_site'),(69,'Can delete site',23,'delete_site'),(70,'Can add email confirmation',24,'add_emailconfirmation'),(71,'Can change email confirmation',24,'change_emailconfirmation'),(72,'Can delete email confirmation',24,'delete_emailconfirmation'),(73,'Can add email address',25,'add_emailaddress'),(74,'Can change email address',25,'change_emailaddress'),(75,'Can delete email address',25,'delete_emailaddress'),(76,'Can add social application token',26,'add_socialtoken'),(77,'Can change social application token',26,'change_socialtoken'),(78,'Can delete social application token',26,'delete_socialtoken'),(79,'Can add social account',27,'add_socialaccount'),(80,'Can change social account',27,'change_socialaccount'),(81,'Can delete social account',27,'delete_socialaccount'),(82,'Can add social application',28,'add_socialapp'),(83,'Can change social application',28,'change_socialapp'),(84,'Can delete social application',28,'delete_socialapp');
 /*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,36 +97,8 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$36000$BIrIbW4N3Tt6$GIBqI6E47+GkF6rVkJ1TuMZm9U9TrjLdfC6T7NIiwJM=','2017-11-12 13:27:39.239491',1,'rahilhastu','','','rahilhastu@gmail.com',1,1,'2017-10-30 18:06:15.000000');
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$36000$BIrIbW4N3Tt6$GIBqI6E47+GkF6rVkJ1TuMZm9U9TrjLdfC6T7NIiwJM=','2017-11-15 15:19:20.031760',1,'rahilhastu','','','rahilhastu@gmail.com',1,1,'2017-10-30 18:06:15.000000');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `auth_user_groups`
---
-
-DROP TABLE IF EXISTS `auth_user_groups`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `auth_user_groups` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `auth_user_groups_user_id_group_id_94350c0c_uniq` (`user_id`,`group_id`),
-  KEY `auth_user_groups_group_id_97559544_fk_auth_group_id` (`group_id`),
-  CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
-  CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `auth_user_groups`
---
-
-LOCK TABLES `auth_user_groups` WRITE;
-/*!40000 ALTER TABLE `auth_user_groups` DISABLE KEYS */;
-/*!40000 ALTER TABLE `auth_user_groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -225,7 +145,8 @@ CREATE TABLE `details` (
   `country` varchar(50) NOT NULL,
   PRIMARY KEY (`site_id`,`username`,`rank`),
   UNIQUE KEY `site_id` (`site_id`,`username`),
-  CONSTRAINT `details_ibfk_1` FOREIGN KEY (`site_id`, `username`) REFERENCES `users` (`site_id`, `username`) ON DELETE CASCADE ON UPDATE CASCADE
+  UNIQUE KEY `site_id_2` (`site_id`,`rank`),
+  CONSTRAINT `details_ibfk_1` FOREIGN KEY (`site_id`, `username`) REFERENCES `users` (`sid`, `userNAME`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -238,6 +159,21 @@ LOCK TABLES `details` WRITE;
 INSERT INTO `details` VALUES (1,'aawisong','Wisong',13,'Sciences','North Korea'),(1,'abhi_rao','Abhijith Rao',841,'PES Institute of Technology, Bangalore','India'),(1,'ACRush','Tiancheng Lou',16,'Baidu.Inc','China'),(1,'adithya123','Adithya Rao',6301,'PES Institute of Technology, Bangalore','India'),(1,'alex_2oo8','Alexey Zayakin',5,'whiteCryption','Latvia'),(1,'ccz181078','ccz',18,'Shantou Jinshan High School','China'),(1,'ceilks','Carsten Eilks',2,'FernUniversitat Hagen','Germany'),(1,'coder_h','Harsh',5615,'International Institute of Information Technology, Hyderabad','India'),(1,'cueball','Mohit Mayank',1348,'PES Institute of Technology, Bangalore','India'),(1,'devansh7','Devansh ',1273,'PES Institute of Technology, Bangalore','India'),(1,'dj3500','Jakub Tarnawski',19,'Ecole polytechnique federale de Lausanne','Poland'),(1,'Fdg','Dmytro Ihnatenko',12,'Google','Ukraine'),(1,'gennady.korotkevich','Gennady Korotkevich',1,'Saint Petersburg National Research University of Information Technologies, Mechanics and Optics','Belarus'),(1,'imperfectboy','Bhaskar Kumar',1115,'PES Institute of Technology, Bangalore','India'),(1,'kewl_akshat','Akshat Maheshwari',1527,'PES Institute of Technology, Bangalore','India'),(1,'kgcstar','Korean Glorious Coding STAR',17,'Kim II-sung University','North Korea'),(1,'kollarevanth','kolla mohan subhash revanth',5650,'Gayatri Vidya Parishad college of Engineering, Visakhapatnam','India'),(1,'kutengine','SongChol Ryu',6,'Kim Chaek University of Technology','North Korea'),(1,'lebron','Bohdan',15,'Unemployed','Ukraine'),(1,'lhic','Mikhail Ipatov',8,'Lomonosov Moscow State University','Russia'),(1,'liouzhou_101','Tiny Wong',14,'Tsinghua University','China'),(1,'mmaxio','Mikhail M.',9,'Perm State University National Research','Russia'),(1,'mugurelionut','Mugurel Ionut Andreica',3,'Google Switzerland','Romania'),(1,'raagz','raghunandan sharma',1447,'PES Institute of Technology, Bangalore','India'),(1,'rahilhastu','Rahil Hastu',1088,'PES Institute of Technology, Bangalore','India'),(1,'shreesha_s','Shreesha S',1030,'PES Institute of Technology, Bangalore','India'),(1,'skyfire','Alexey Prokopnev',7,'Self Employed','Belarus'),(1,'sonysust','Shahriar',5541,'Shahjalal University of Science & Technology','Bangladesh'),(1,'uwi','uwi',4,'Recruit Communications Co., Ltd.','Japan'),(1,'waterfalls','Daniel Chiu',11,'Catlin Gabel School','United States'),(1,'zhouyuchen','Zhou, Yuchen',10,'Zhejiang University','China'),(2,'abdou_93','abdou_93',30,' Faculty of science Cairo university',' Egypt'),(2,'alex_the_great','Aleksandar Kostadinov',25,' Gimnazija Krusevac',' Serbia'),(2,'andypertamax','Andy',32,' Institut Teknologi Sepuluh Nopember',' Indonesia'),(2,'anton_lunyov','Anton Lunyov',22,' IAMM Donetsk',' Ukraine'),(2,'azneye','Andy Y.F. Huang',36,' University of Waterloo',' Canada'),(2,'balroginfire','Erjin Zhou',19,' Shaoxing No.1 High School',' China'),(2,'bd1916','ebd',16,' Rocket Fuel Inc.',' United States'),(2,'cyclops','Mitch Schwartz',9,' -',' Holy See (vatican City State)'),(2,'damians','Damian Straszak',33,' University of WrocÅ‚aw',' Poland'),(2,'defrager','Oleg',4,' Google Inc.',' Russian Federation'),(2,'devilwolverine','Vipul Srivastava',35,' VIT University ,Vellore',' India'),(2,'gaurav_agarval','Gaurav Agarwal',31,' IIIT Hyderabad',' United States'),(2,'gerrob','Robert Gerbicz',5,' ELTE',' Hungary'),(2,'gingkgo','shihanyuan',10,' Shaoxing No.1 High School',' China'),(2,'hodobox','Hodobox',6,' Comenius University',' Slovakia'),(2,'ikatanic','Ivan Katanic',12,' FER Zagreb',' Croatia'),(2,'mehmetinal','Mehmet Inal',11,' Hacettepe University Computer Engineering',' Turkey'),(2,'morass','Morass',29,' CTU Prague',' Czech Republic'),(2,'sergej_t','Sergej',24,' private',' Germany'),(2,'sgtlaugh','sgtlaugh',23,' Â ',' South Georgia And The South Sandwich Islands'),(2,'sherlock_holms','Rishav Goyal',20,' IIIT Hyderabad',' India'),(2,'sourspinach','SourSpinach',3,' Facebook',' United States'),(2,'stjepang','Stjepan Glavina',15,' GLAVINA-MANDURA j.d.o.o.',' Croatia'),(2,'thanatipanonda','Thotsaphon Thanatipanonda',13,' Chulalongkorn University',' Thailand'),(2,'tjandra','Tjandra Satria Gunawan',14,' Matematika UI',' Indonesia'),(2,'tourist','Gennady Korotkevich',37,' School #56',' Belarus'),(2,'uci_015','Shaka Shadows',26,' Google Inc.',' Cuba'),(2,'xilinx','[Rampage] Blue.Mary',1,' Fudan University',' China'),(2,'xujie','Eternal Answer',27,' Shaoxing No.1 High School',' China'),(2,'zukow',':D',2,' Gdansk University of Technology',' Poland'),(3,'beeboop19','Chris D',22,'School',' United States '),(3,'cdms0','Claudio Sousa',24,'School',' Switzerland '),(3,'cjordanball','NA',2,' Looking! ',' United States '),(3,'Corinto','NA',10,' Looking ',' Mexico '),(3,'EmperorDuny','Greg',13,'School',' United States '),(3,'emuchynski','Eugene',7,'School',' United States '),(3,'escapiststupor','Phyllis Yen',27,'School',' Taiwan '),(3,'gutty333','NA',19,'School',' United States '),(3,'gzamfire','NA',15,'School',' United States '),(3,'hunsoo','Hunsoo',3,'School',' United States '),(3,'hurgadion','NA',30,'School',' Poland '),(3,'hyuil','JÃ©rÃ´me Vernet',1,' Alteca ',' France '),(3,'jackgeek','Jack Allan',26,'School',' Ireland '),(3,'jrorsini','Jean-Roger Orsini',14,'School',' France '),(3,'junjunparkpark','JP',9,'School',' United States '),(3,'kalgima','Alain T.',4,'School',' Canada '),(3,'KlaraKathrina','NA',6,'School',' Germany '),(3,'kmosier','NA',29,'School',' United States '),(3,'leot75','NA',16,'School',' United States '),(3,'lesian','Lesian Lengare',11,' none ',' United States '),(3,'lokeshmogra','Lokesh Mogra',23,' lprokat ',' India '),(3,'mattlarsh','Matt Larsh',20,'School',' United States '),(3,'memyselfandhai','NA',28,'School',' United States '),(3,'mmalkavian','NA',17,' none ',' Italy '),(3,'nulln','NA',21,'School',' United States '),(3,'Qlogin','Roman',5,' Transas ',' Russian Federation '),(3,'rnelson082','NA',25,'School',' United States '),(3,'Ryanm1234','NA',18,'School',' United States '),(3,'Ryantimjohn','Tim Ryan',12,' UIC Dept of Psychiatry ',' United States '),(3,'Sabin','Sabu Nadarajan',8,'School',' United States '),(5,'goswami','Mohit Goswami',55,'LPU','India');
 /*!40000 ALTER TABLE `details` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger insertIntoUsers before insert on  details for each row  begin insert into users(sid,userNAME) values (new.site_id,new.username); end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `django_admin_log`
@@ -286,7 +222,7 @@ CREATE TABLE `django_content_type` (
   `model` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -295,7 +231,7 @@ CREATE TABLE `django_content_type` (
 
 LOCK TABLES `django_content_type` WRITE;
 /*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
-INSERT INTO `django_content_type` VALUES (1,'admin','logentry'),(2,'auth','group'),(3,'auth','permission'),(4,'auth','user'),(5,'contenttypes','contenttype'),(7,'Data','authgroup'),(8,'Data','authgrouppermissions'),(9,'Data','authpermission'),(10,'Data','authuser'),(11,'Data','authusergroups'),(12,'Data','authuseruserpermissions'),(13,'Data','details'),(14,'Data','djangoadminlog'),(15,'Data','djangocontenttype'),(16,'Data','djangomigrations'),(17,'Data','djangosession'),(21,'Data','questions'),(18,'Data','result'),(19,'Data','sites'),(20,'Data','users'),(6,'sessions','session');
+INSERT INTO `django_content_type` VALUES (25,'account','emailaddress'),(24,'account','emailconfirmation'),(1,'admin','logentry'),(2,'auth','group'),(3,'auth','permission'),(4,'auth','user'),(5,'contenttypes','contenttype'),(22,'Data','admin'),(7,'Data','authgroup'),(8,'Data','authgrouppermissions'),(9,'Data','authpermission'),(10,'Data','authuser'),(11,'Data','authusergroups'),(12,'Data','authuseruserpermissions'),(13,'Data','details'),(14,'Data','djangoadminlog'),(15,'Data','djangocontenttype'),(16,'Data','djangomigrations'),(17,'Data','djangosession'),(21,'Data','questions'),(18,'Data','result'),(19,'Data','sites'),(20,'Data','users'),(6,'sessions','session'),(23,'sites','site'),(27,'socialaccount','socialaccount'),(28,'socialaccount','socialapp'),(26,'socialaccount','socialtoken');
 /*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -312,7 +248,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -321,7 +257,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2017-10-25 18:26:19.569261'),(2,'auth','0001_initial','2017-10-25 18:26:27.181284'),(3,'admin','0001_initial','2017-10-25 18:26:29.116594'),(4,'admin','0002_logentry_remove_auto_add','2017-10-25 18:26:29.249619'),(5,'contenttypes','0002_remove_content_type_name','2017-10-25 18:26:30.456938'),(6,'auth','0002_alter_permission_name_max_length','2017-10-25 18:26:30.602492'),(7,'auth','0003_alter_user_email_max_length','2017-10-25 18:26:30.714529'),(8,'auth','0004_alter_user_username_opts','2017-10-25 18:26:30.757354'),(9,'auth','0005_alter_user_last_login_null','2017-10-25 18:26:31.417679'),(10,'auth','0006_require_contenttypes_0002','2017-10-25 18:26:31.462548'),(11,'auth','0007_alter_validators_add_error_messages','2017-10-25 18:26:31.516421'),(12,'auth','0008_alter_user_username_max_length','2017-10-25 18:26:32.008797'),(13,'sessions','0001_initial','2017-10-25 18:26:32.911440'),(14,'Data','0001_initial','2017-11-07 15:01:53.280850'),(15,'Data','0002_auto_20171112_1327','2017-11-12 13:27:25.503276');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2017-10-25 18:26:19.569261'),(2,'auth','0001_initial','2017-10-25 18:26:27.181284'),(3,'admin','0001_initial','2017-10-25 18:26:29.116594'),(4,'admin','0002_logentry_remove_auto_add','2017-10-25 18:26:29.249619'),(5,'contenttypes','0002_remove_content_type_name','2017-10-25 18:26:30.456938'),(6,'auth','0002_alter_permission_name_max_length','2017-10-25 18:26:30.602492'),(7,'auth','0003_alter_user_email_max_length','2017-10-25 18:26:30.714529'),(8,'auth','0004_alter_user_username_opts','2017-10-25 18:26:30.757354'),(9,'auth','0005_alter_user_last_login_null','2017-10-25 18:26:31.417679'),(10,'auth','0006_require_contenttypes_0002','2017-10-25 18:26:31.462548'),(11,'auth','0007_alter_validators_add_error_messages','2017-10-25 18:26:31.516421'),(12,'auth','0008_alter_user_username_max_length','2017-10-25 18:26:32.008797'),(13,'sessions','0001_initial','2017-10-25 18:26:32.911440'),(14,'Data','0001_initial','2017-11-07 15:01:53.280850'),(15,'Data','0002_auto_20171112_1327','2017-11-12 13:27:25.503276'),(16,'Data','0003_auto_20171114_1343','2017-11-14 13:44:03.102959'),(17,'account','0001_initial','2017-11-14 18:01:52.354966'),(18,'account','0002_email_max_length','2017-11-14 18:01:52.678688'),(19,'sites','0001_initial','2017-11-14 18:01:53.026380'),(20,'sites','0002_alter_domain_unique','2017-11-14 18:01:53.315699'),(21,'socialaccount','0001_initial','2017-11-14 18:01:58.894683'),(22,'socialaccount','0002_token_max_lengths','2017-11-14 18:01:59.230131'),(23,'socialaccount','0003_extra_data_default_dict','2017-11-14 18:01:59.294291');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -347,8 +283,34 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('1u0a2fhi9m3lbxx8tib80b281m2ncdo0','OGZkYjFjY2EyZDQ4MzhjMzNmM2I0N2ViYmVhNWU2ZDAyOGJiYmJlODp7Il9hdXRoX3VzZXJfaGFzaCI6Ijg4ZmRkOGNmZDNkZjliZjQ3ZjI3MTRkNzQ2ODJjZGE3M2JiZjkyM2UiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-11-19 10:21:33.861862'),('fik9eiwl5d4so6uhew8idzvgvfahfige','OTlhNjY0ZmU5ODUyNmRmZTM1ZjQzODdlMDBlMDYyZWI3MTJlNTA2MTp7Il9hdXRoX3VzZXJfaGFzaCI6ImY4MTVhNDgyMjljZWM5ZTVhYTM4ZWI1YmU3MTRkM2E5NTQxMjE2ZDkiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-11-26 13:27:39.273241'),('ju7t4ogsai87x0n803pjf9ooi94e0k92','OGZkYjFjY2EyZDQ4MzhjMzNmM2I0N2ViYmVhNWU2ZDAyOGJiYmJlODp7Il9hdXRoX3VzZXJfaGFzaCI6Ijg4ZmRkOGNmZDNkZjliZjQ3ZjI3MTRkNzQ2ODJjZGE3M2JiZjkyM2UiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-11-21 06:54:34.978197'),('l2ib99qeeql0pba4doacb9vgw4vqwhm0','OTlhNjY0ZmU5ODUyNmRmZTM1ZjQzODdlMDBlMDYyZWI3MTJlNTA2MTp7Il9hdXRoX3VzZXJfaGFzaCI6ImY4MTVhNDgyMjljZWM5ZTVhYTM4ZWI1YmU3MTRkM2E5NTQxMjE2ZDkiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-11-25 10:21:24.490708'),('zygepz8aabm6zrc5mcv78233282v1jyb','OGZkYjFjY2EyZDQ4MzhjMzNmM2I0N2ViYmVhNWU2ZDAyOGJiYmJlODp7Il9hdXRoX3VzZXJfaGFzaCI6Ijg4ZmRkOGNmZDNkZjliZjQ3ZjI3MTRkNzQ2ODJjZGE3M2JiZjkyM2UiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-11-14 06:23:24.247068');
+INSERT INTO `django_session` VALUES ('1u0a2fhi9m3lbxx8tib80b281m2ncdo0','OGZkYjFjY2EyZDQ4MzhjMzNmM2I0N2ViYmVhNWU2ZDAyOGJiYmJlODp7Il9hdXRoX3VzZXJfaGFzaCI6Ijg4ZmRkOGNmZDNkZjliZjQ3ZjI3MTRkNzQ2ODJjZGE3M2JiZjkyM2UiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-11-19 10:21:33.861862'),('6u8jc0w9fssp7pn06xuzf962zqpcms46','NGQ0NTJmYmY2MTBmZjJiY2Q4MjRmOGU2NDk5N2RhNzRmZjI5NDM4Yzp7Il9zZXNzaW9uX2V4cGlyeSI6MCwiX2F1dGhfdXNlcl9oYXNoIjoiZjgxNWE0ODIyOWNlYzllNWFhMzhlYjViZTcxNGQzYTk1NDEyMTZkOSIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6IjEifQ==','2017-11-28 18:17:17.826830'),('7gk79ov6qqg8gipdkeau7sdn9qjijme2','OTlhNjY0ZmU5ODUyNmRmZTM1ZjQzODdlMDBlMDYyZWI3MTJlNTA2MTp7Il9hdXRoX3VzZXJfaGFzaCI6ImY4MTVhNDgyMjljZWM5ZTVhYTM4ZWI1YmU3MTRkM2E5NTQxMjE2ZDkiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-11-28 13:46:54.994405'),('fik9eiwl5d4so6uhew8idzvgvfahfige','OTlhNjY0ZmU5ODUyNmRmZTM1ZjQzODdlMDBlMDYyZWI3MTJlNTA2MTp7Il9hdXRoX3VzZXJfaGFzaCI6ImY4MTVhNDgyMjljZWM5ZTVhYTM4ZWI1YmU3MTRkM2E5NTQxMjE2ZDkiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-11-26 13:27:39.273241'),('ju7t4ogsai87x0n803pjf9ooi94e0k92','OGZkYjFjY2EyZDQ4MzhjMzNmM2I0N2ViYmVhNWU2ZDAyOGJiYmJlODp7Il9hdXRoX3VzZXJfaGFzaCI6Ijg4ZmRkOGNmZDNkZjliZjQ3ZjI3MTRkNzQ2ODJjZGE3M2JiZjkyM2UiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-11-21 06:54:34.978197'),('l2ib99qeeql0pba4doacb9vgw4vqwhm0','OTlhNjY0ZmU5ODUyNmRmZTM1ZjQzODdlMDBlMDYyZWI3MTJlNTA2MTp7Il9hdXRoX3VzZXJfaGFzaCI6ImY4MTVhNDgyMjljZWM5ZTVhYTM4ZWI1YmU3MTRkM2E5NTQxMjE2ZDkiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-11-25 10:21:24.490708'),('z3loo4xkaam4p3i7yktbyc96i9g06sqn','ODdkYTk2MTY0OWJiOGIzODViMjgwYjZkNDhhMzU5OGE1OWEwZjc4Yjp7fQ==','2017-12-06 11:08:10.009017'),('zygepz8aabm6zrc5mcv78233282v1jyb','OGZkYjFjY2EyZDQ4MzhjMzNmM2I0N2ViYmVhNWU2ZDAyOGJiYmJlODp7Il9hdXRoX3VzZXJfaGFzaCI6Ijg4ZmRkOGNmZDNkZjliZjQ3ZjI3MTRkNzQ2ODJjZGE3M2JiZjkyM2UiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-11-14 06:23:24.247068');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_site`
+--
+
+DROP TABLE IF EXISTS `django_site`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_site` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `domain` varchar(100) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `django_site_domain_a2e37b91_uniq` (`domain`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_site`
+--
+
+LOCK TABLES `django_site` WRITE;
+/*!40000 ALTER TABLE `django_site` DISABLE KEYS */;
+INSERT INTO `django_site` VALUES (1,'example.com','example.com');
+/*!40000 ALTER TABLE `django_site` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -395,7 +357,7 @@ CREATE TABLE `result` (
   PRIMARY KEY (`id`),
   KEY `site_id` (`site_id`,`username`),
   KEY `site_id_2` (`site_id`,`contest_code`,`question_code`),
-  CONSTRAINT `result_ibfk_1` FOREIGN KEY (`site_id`, `username`) REFERENCES `users` (`site_id`, `username`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `result_ibfk_1` FOREIGN KEY (`site_id`, `username`) REFERENCES `users` (`sid`, `userNAME`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `result_ibfk_2` FOREIGN KEY (`site_id`, `contest_code`, `question_code`) REFERENCES `questions` (`site_id`, `contest_code`, `question_code`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1074 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -442,10 +404,10 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `site_id` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  PRIMARY KEY (`site_id`,`username`),
-  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`site_id`) REFERENCES `sites` (`site_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  `sid` int(11) NOT NULL,
+  `userNAME` varchar(100) NOT NULL,
+  PRIMARY KEY (`sid`,`userNAME`),
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`sid`) REFERENCES `sites` (`site_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -455,7 +417,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'aawisong'),(1,'abhi_rao'),(1,'ACRush'),(1,'adithya123'),(1,'alex_2oo8'),(1,'ccz181078'),(1,'ceilks'),(1,'coder_h'),(1,'cueball'),(1,'devansh7'),(1,'dj3500'),(1,'Fdg'),(1,'gennady.korotkevich'),(1,'imperfectboy'),(1,'kewl_akshat'),(1,'kgcstar'),(1,'kollarevanth'),(1,'kutengine'),(1,'lebron'),(1,'lhic'),(1,'liouzhou_101'),(1,'mmaxio'),(1,'mugurelionut'),(1,'raagz'),(1,'rahilhastu'),(1,'shreesha_s'),(1,'skyfire'),(1,'sonysust'),(1,'uwi'),(1,'waterfalls'),(1,'zhouyuchen'),(2,'abdou_93'),(2,'alex_the_great'),(2,'andypertamax'),(2,'anton_lunyov'),(2,'azneye'),(2,'balroginfire'),(2,'bd1916'),(2,'cyclops'),(2,'damians'),(2,'defrager'),(2,'devilwolverine'),(2,'gaurav_agarval'),(2,'gerrob'),(2,'gingkgo'),(2,'hodobox'),(2,'ikatanic'),(2,'mehmetinal'),(2,'morass'),(2,'sergej_t'),(2,'sgtlaugh'),(2,'sherlock_holms'),(2,'sourspinach'),(2,'stjepang'),(2,'thanatipanonda'),(2,'tjandra'),(2,'tourist'),(2,'uci_015'),(2,'xilinx'),(2,'xujie'),(2,'zukow'),(3,'beeboop19'),(3,'cdms0'),(3,'cjordanball'),(3,'Corinto'),(3,'EmperorDuny'),(3,'emuchynski'),(3,'escapiststupor'),(3,'gutty333'),(3,'gzamfire'),(3,'hunsoo'),(3,'hurgadion'),(3,'hyuil'),(3,'jackgeek'),(3,'jrorsini'),(3,'junjunparkpark'),(3,'kalgima'),(3,'KlaraKathrina'),(3,'kmosier'),(3,'leot75'),(3,'lesian'),(3,'lokeshmogra'),(3,'mattlarsh'),(3,'memyselfandhai'),(3,'mmalkavian'),(3,'nulln'),(3,'Qlogin'),(3,'rnelson082'),(3,'Ryanm1234'),(3,'Ryantimjohn'),(3,'Sabin'),(5,'goswami');
+INSERT INTO `users` VALUES (1,'aawisong'),(1,'abhi_rao'),(1,'ACRush'),(1,'adithya123'),(1,'alex_2oo8'),(1,'ccz181078'),(1,'ceilks'),(1,'coder_h'),(1,'cueball'),(1,'devansh7'),(1,'dj3500'),(1,'Fdg'),(1,'gennady.korotkevich'),(1,'imperfectboy'),(1,'kewl_akshat'),(1,'kgcstar'),(1,'kollarevanth'),(1,'kutengine'),(1,'lebron'),(1,'lhic'),(1,'liouzhou_101'),(1,'mmaxio'),(1,'mugurelionut'),(1,'raagz'),(1,'rahilhastu'),(1,'shreesha_s'),(1,'skyfire'),(1,'sonysust'),(1,'username'),(1,'uwi'),(1,'waterfalls'),(1,'zhouyuchen'),(2,'abdou_93'),(2,'alex_the_great'),(2,'andypertamax'),(2,'anton_lunyov'),(2,'azneye'),(2,'balroginfire'),(2,'bd1916'),(2,'cyclops'),(2,'damians'),(2,'defrager'),(2,'devilwolverine'),(2,'gaurav_agarval'),(2,'gerrob'),(2,'gingkgo'),(2,'hodobox'),(2,'ikatanic'),(2,'mehmetinal'),(2,'morass'),(2,'sergej_t'),(2,'sgtlaugh'),(2,'sherlock_holms'),(2,'sourspinach'),(2,'stjepang'),(2,'thanatipanonda'),(2,'tjandra'),(2,'tourist'),(2,'uci_015'),(2,'xilinx'),(2,'xujie'),(2,'zukow'),(3,'beeboop19'),(3,'cdms0'),(3,'cjordanball'),(3,'Corinto'),(3,'EmperorDuny'),(3,'emuchynski'),(3,'escapiststupor'),(3,'gutty333'),(3,'gzamfire'),(3,'hunsoo'),(3,'hurgadion'),(3,'hyuil'),(3,'jackgeek'),(3,'jrorsini'),(3,'junjunparkpark'),(3,'kalgima'),(3,'KlaraKathrina'),(3,'kmosier'),(3,'leot75'),(3,'lesian'),(3,'lokeshmogra'),(3,'mattlarsh'),(3,'memyselfandhai'),(3,'mmalkavian'),(3,'nulln'),(3,'Qlogin'),(3,'rnelson082'),(3,'Ryanm1234'),(3,'Ryantimjohn'),(3,'Sabin'),(5,'goswami'),(5,'hastu');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -468,4 +430,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-14 18:50:46
+-- Dump completed on 2017-11-23  3:06:01
