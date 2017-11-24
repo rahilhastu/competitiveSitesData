@@ -16,19 +16,19 @@
     <h1 style="font-size:30px;" > {{ err }} </h1>
       <p><b><a href="{% url 'login' %}">Login</a> to proceed</b></p>
     {% else %}  
-    <h5 style="font-size:30px;color: #ffffff;margin-bottom: 30px;">Add User</h5>
+    <h5 style="font-size:30px;color: #ffffff;margin-bottom: 30px;">Add Questions </h5>
   
   <form method="post" action="">
       {% csrf_token %}
       <input type="radio" name="Site" value ='1' autofocus placeholder="codechef" checked> codechef           
       <input type="radio" name="Site" value="2" > Spoj             
       <input type="radio" name="Site" value="3" >Coderbyte<br><br>
-      <input style="margin: 5px;" type="text" name="username"  size="30 " autofocus placeholder="Username"/>  <br>
-      <input style="margin: 5px;" type="text" name="name"  size="30 " autofocus placeholder="Name"/>  <br>
-      <input style="margin: 5px;" type="text" name="rank"  size="30 " autofocus placeholder="Rank"/>  <br>
-      <input style="margin: 5px;" type="text" name="institute"  size="30 " autofocus placeholder="Institute"/>  <br>
-      <input style="margin: 5px;" type="text" name="country"  size="30 " autofocus placeholder="Country"/>  <br>
-      <button style="margin: 30px;" type="submit" class='btn btn-default' >Add User</button>
+      <input style="marginin: 5px;" type="text" name="username"  size="30 " autofocus placeholder="Username"/>  <br>
+      <input style="margin: 5px;" type="text" name="contest_code"  size="30 " autofocus placeholder="contest_code"/>  <br>
+      <input style="margin: 5px;" type="text" name="question_code"  size="30 " autofocus placeholder="question_code"/>  <br>
+      <input style="margin: 5px;" type="text" name="result"  size="30 " autofocus placeholder="result"/>  <br>
+      <input style="margin: 5px;" type="text" name="language"  size="30 " autofocus placeholder="language"/>  <br>
+      <button style="margin: 30px;" type="submit" class='btn btn-default' >User Details</button>
   </form>
   {% endif %}
 </div>

@@ -28,7 +28,6 @@ urlpatterns = [
     url(r'^questions/$', homeView.questions, name='questions'),
     url(r'^login/$', homeView.login,name='login'),
     url(r'^logout/$', homeView.logout,name='logout'),
-    # url(r'^insert/$', adminView.logout,name='update'),
     url(r'^alter/$', adminView.alter,name='alter'),
-
+    # url(r'^alterquestions/$', adminView.alterquestions,name='alterquestions'),
 ]

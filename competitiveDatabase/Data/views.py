@@ -2,11 +2,11 @@
 from __future__ import unicode_literals
 from django import forms
 from django.shortcuts import render
-from Data.models import Result,Questions,Details,Sites,Users
+# from Data.models import Result,Questions,Details,Sites,Users
 from django.conf import settings
 import MySQLdb
 from django.db import connection
-from .forms import loggedIn
+# from .forms import loggedIn
 from django.http import HttpResponseRedirect
 from django.contrib import auth
 
@@ -52,7 +52,7 @@ def users(request):
 		s,u,c,q,r=0,0,0,0,0
 		site = str(request.POST['site'])
 		username = str(request.POST['username'])
-		contest = str(request.POST['contest'])	
+		contest = str(request.POST['contest'])		
 		question = str(request.POST['question'])
 		result = str(request.POST['result'])
 		language = str(	request.POST['lang'])	
