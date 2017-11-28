@@ -29,5 +29,5 @@ urlpatterns = [
     url(r'^login/$', homeView.login,name='login'),
     url(r'^logout/$', homeView.logout,name='logout'),
     url(r'^alter/$', adminView.alter,name='alter'),
-    # url(r'^alterquestions/$', adminView.alterquestions,name='alterquestions'),
+    # url(r'^alterQuestions/$', adminView.alterQuestions,name='alterQuestions'),
 ]

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends base.html %}
 {% block content %}
 <style type="text/css">
   .s{
@@ -16,6 +16,10 @@
     <h1 style="font-size:30px;" > {{ err }} </h1>
       <p><b><a href="{% url 'login' %}">Login</a> to proceed</b></p>
     {% else %}  
+    {% if err1 %}
+      <h1 style="font-size:30px;" > {{ err1 }} </h1>
+    {% endif %}
+
     <h5 style="font-size:30px;color: #ffffff;margin-bottom: 30px;">Add User</h5>
   
   <form method="post" action="">

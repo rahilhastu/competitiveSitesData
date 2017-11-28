@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 import MySQLdb
 
 # Create your views here.
@@ -31,31 +31,44 @@ def alter(request):
 		name = unicode(request.POST['name'])
 		institute = unicode(request.POST['institute'])
 		country = unicode(request.POST['country'])
-		rank = unicode(request.POST['rank'])
+		rank = unicode(request.POST['ran'])
 		print site,username,name
 		# print site
 		try:
 			print '------A'
-			cur.execute('insert into details() values (%s,%s,%s,%s,%s,%s)',(site,username,name,rank,institute,country))
+			storedProcedure = "exec addOneToRank(%s,%s)",(site,rank)
+			sql = 'insert into details() values (%s,%s,%s,%s,%s,%s)',(site,username,name,rank,institute,country)
+			# print sql
+			cur.execute(storedProcedure)
+			cur.execute(sql)
 			print '------B'
 			conn.commit()
-			if username!=None:
-				context = {'username':username}
-			template = 'homePage.html'
+			# template = 'homePage.html'
+			return HttpResponseRedirect("/alterQuestions",context)
 		except:
 			print '------C'
 			template = 'alter.html'
 			context = {}
 			conn.rollback()
+			return render(request,template,context)
 
-		return render(request,template,context)
 
-def alterquestions(request):
+def alterQuestions(request):
 	username=None
 	if request.session.has_key('username'):
 		username = request.session['username']
-	if username!=None:
-		context = {'username':username}
+
+	if request.method=="GET":
+		if username!=None:
+			context = {'username':username}
 		template = 'addQuestions.html'
+		return render(request,template,context)			
+
+	if request.method=="POST":
+		site = unicode(request.POST['Site'])
+		print site
+
+	context={ }
+	return HttpResponseRedirect("/")
+
 	
-	return render(request,template,context)			
