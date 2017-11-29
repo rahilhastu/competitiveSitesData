@@ -220,6 +220,7 @@ def login(request):
 	if request.method=='GET':
 		template = 'login.html'
 		context ={}
+		return render(request,template,context)
 
 	if request.method=="POST":
 		username= str(request.POST['username'])
@@ -236,16 +237,17 @@ def login(request):
 			template='homePage.html'
 			request.session['username']=username
 			context = {'username':username}
+			return HttpResponseRedirect("/",context)
 
 		else:
 			print "User not authenticated"
 			template = 'login.html'
 			notAuthenticated = 'Not authenticated'
 			context={"error":notAuthenticated}
+			return render(request,template,context)
 
 		print username + " - " + password
 
-	return render(request,template,context)
 
 def logout(request):
 
@@ -257,32 +259,4 @@ def logout(request):
 
 		template = 'homePage.html'
 		context={}
-		return render(request,template,context)
-
-	if request.method=="POST":
-		username= str(request.POST['username'])
-		password = str(request.POST['password'])	
-
-		sql = "select username,password from admin where username ='%s'"%(username) + " and password = '%s'"%(password)
-		print sql
-		q = cur.execute(sql)
-		data = cur.fetchall()
-		print data
-
-		if len(data) ==1:
-			print "User authenticated"
-			template='homePage.html'
-			request.session['username']=username
-			context = {'username':username}
-
-		else:
-			print "User not authenticated"
-			template = 'login.html'
-			notAuthenticated = 'Not authenticated'
-			context={"error":notAuthenticated}
-
-		print username + " - " + password
-
-		return render(request,template,context)
-		
-	
+		return HttpResponseRedirect("/",context)

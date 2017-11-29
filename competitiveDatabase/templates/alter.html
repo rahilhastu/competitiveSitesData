@@ -1,4 +1,4 @@
-{% extends base.html %}
+{% extends 'base.html' %}
 {% block content %}
 <style type="text/css">
   .s{
@@ -17,14 +17,14 @@
       <p><b><a href="{% url 'login' %}">Login</a> to proceed</b></p>
     {% else %}  
     {% if err1 %}
-      <h1 style="font-size:30px;" > {{ err1 }} </h1>
+      <h1 style="font-size:30px;" > {{ err1 }} </h1><br>
     {% endif %}
 
     <h5 style="font-size:30px;color: #ffffff;margin-bottom: 30px;">Add User</h5>
   
   <form method="post" action="">
       {% csrf_token %}
-      <input type="radio" name="Site" value ='1' autofocus placeholder="codechef" checked> codechef           
+      <input type="radio" name="Site" value ='1' autofocus placeholder="codechef" checked> Codechef           
       <input type="radio" name="Site" value="2" > Spoj             
       <input type="radio" name="Site" value="3" >Coderbyte<br><br>
       <input style="margin: 5px;" type="text" name="username"  size="30 " autofocus placeholder="Username"/>  <br>

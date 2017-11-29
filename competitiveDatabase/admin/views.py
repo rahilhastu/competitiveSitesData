@@ -23,52 +23,32 @@ def alter(request):
 			return render(request,template,context)
 
 	if request.method == 'POST':
-		username=None
-		if request.session.has_key('username'):
-			username = request.session['username']
 		site = unicode(request.POST['Site'])
 		username = unicode(request.POST['username'])
 		name = unicode(request.POST['name'])
 		institute = unicode(request.POST['institute'])
 		country = unicode(request.POST['country'])
-		rank = unicode(request.POST['ran'])
-		print site,username,name
+		rank = unicode(request.POST['rank'])
+		print site,username,name,institute,country,rank
 		# print site
 		try:
 			print '------A'
-			storedProcedure = "exec addOneToRank(%s,%s)",(site,rank)
-			sql = 'insert into details() values (%s,%s,%s,%s,%s,%s)',(site,username,name,rank,institute,country)
-			# print sql
-			cur.execute(storedProcedure)
-			cur.execute(sql)
+			params = (site,rank)
+			print params
+			cur.callproc('addOneToRank',params) #calling procedure
+			print "-----------------------------------------------------"
+			conn.commit()
+			cur.execute('insert into details() values(%s,%s,%s,%s,%s,%s)',(site,username,name,rank\
+																			,institute,country))
 			print '------B'
 			conn.commit()
-			# template = 'homePage.html'
-			return HttpResponseRedirect("/alterQuestions",context)
-		except:
-			print '------C'
-			template = 'alter.html'
-			context = {}
-			conn.rollback()
+			if username!=None:
+				context = {'username':username,'site':site}
+				template = 'homePage.html'
 			return render(request,template,context)
-
-
-def alterQuestions(request):
-	username=None
-	if request.session.has_key('username'):
-		username = request.session['username']
-
-	if request.method=="GET":
-		if username!=None:
-			context = {'username':username}
-		template = 'addQuestions.html'
-		return render(request,template,context)			
-
-	if request.method=="POST":
-		site = unicode(request.POST['Site'])
-		print site
-
-	context={ }
-	return HttpResponseRedirect("/")
-
-	
+		except:
+			template = 'alter.html'
+			context = {'err1':'error in data\n'}
+			print '------C'
+			conn.rollback()
+			return HttpResponseRedirect("/alter",context)
