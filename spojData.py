@@ -16,9 +16,10 @@ def main():
 			continue
 		print Name
 		Rank = data.findAll()[0].text
+		print type(Name)
 		try:
 			userLink =  data.findAll('a')[0]['href']
-			userProfile(userLink,Name,Rank)
+			# userProfile(userLink,Name,Rank)
 			count+=1
 			print '\t',count
 			print '-------------------'

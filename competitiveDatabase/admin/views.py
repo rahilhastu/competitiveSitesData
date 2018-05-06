@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 import MySQLdb
 
 # Create your views here.
-conn = MySQLdb.connect(user='root',password='2824',database='competitiveDatabase')
+conn = MySQLdb.connect(user='root',passwd='2506',db='competitiveDatabase')
 cur = conn.cursor()
 
 def alter(request):
