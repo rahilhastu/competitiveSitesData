@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 import MySQLdb
 
 # Create your views here.
-conn = MySQLdb.connect(user='root',passwd='2506',db='competitiveDatabase')
+conn = MySQLdb.connect(user='root',passwd='root',db='competitiveDatabase')
 cur = conn.cursor()
 
 def alter(request):
@@ -35,7 +35,7 @@ def alter(request):
 			print '------A'
 			params = (site,rank)
 			print params
-			cur.callproc('addOneToRank',params) #calling procedure
+			# cur.callproc('addOneToRank',params) #calling procedure
 			print "-----------------------------------------------------"
 			conn.commit()
 			cur.execute('insert into details() values(%s,%s,%s,%s,%s,%s)',(site,username,name,rank\

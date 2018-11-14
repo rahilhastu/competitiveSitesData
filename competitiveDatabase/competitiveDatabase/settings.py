@@ -91,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'competitiveDatabase',
         'USER' : 'root',
-        'PASSWORD' : '2506',
+        'PASSWORD' : 'root',
         'HOST' : 'localhost',
         'PORT' : '',
     }

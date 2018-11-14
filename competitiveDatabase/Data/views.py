@@ -10,7 +10,7 @@ from django.db import connection
 from django.http import HttpResponseRedirect
 from django.contrib import auth
 
-conn = MySQLdb.connect(user='root',passwd='2506',db='competitiveDatabase')
+conn = MySQLdb.connect(user='root',passwd='root',db='competitiveDatabase')
 cur = conn.cursor()
 
 def homeP(request):
