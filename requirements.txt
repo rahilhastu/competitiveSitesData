@@ -82,7 +82,7 @@ uritemplate==3.0.0
 urllib3==1.22
 virtualenv==16.1.0
 w3lib==1.18.0
-Werkzeug==0.15.2
+Werkzeug==0.15.3
 wrapt==1.10.11
 youtube-dl==2019.5.20
 zope.interface==4.4.3
