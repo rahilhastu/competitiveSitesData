@@ -70,7 +70,7 @@ requests-oauthlib==0.8.0
 rsa==4.0
 scikit-learn==0.20.3
 scipy==1.2.1
-Scrapy==1.4.0
+Scrapy==1.8.1
 SecretStorage==2.3.1
 service-identity==17.0.0
 singledispatch==3.4.0.3
