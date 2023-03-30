@@ -13,20 +13,26 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url,include
+from django.conf.urls import include
+from django.urls import re_path
 from django.contrib import admin
 from Data import views as homeView
 from admin import views as adminView
-from django.contrib.auth.views import login
+# from django.contrib.auth.views import login
+from django.contrib.auth import authenticate, login
+from django.conf.urls.static import static
+from django.conf import settings
 # from Data import ur
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', homeView.homeP, name='home'),
-    url(r'^users/$', homeView.users, name='users'),
-    url(r'^ranks/$', homeView.ranks, name='ranks'),
-    url(r'^questions/$', homeView.questions, name='questions'),
-    url(r'^login/$', homeView.login,name='login'),
-    url(r'^logout/$', homeView.logout,name='logout'),
-    url(r'^alter/$', adminView.alter,name='alter'),
+    re_path(r'^admin/', admin.site.urls),
+    re_path(r'^$', homeView.homeP, name='home'),
+    re_path(r'^users/$', homeView.users, name='users'),
+    re_path(r'^ranks/$', homeView.ranks, name='ranks'),
+    re_path(r'^questions/$', homeView.questions, name='questions'),
+    re_path(r'^login/$', homeView.login,name='login'),
+    re_path(r'^logout/$', homeView.logout,name='logout'),
+    re_path(r'^alter/$', adminView.alter,name='alter'),
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

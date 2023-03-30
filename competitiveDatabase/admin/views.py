@@ -29,18 +29,18 @@ def alter(request):
 		institute = unicode(request.POST['institute'])
 		country = unicode(request.POST['country'])
 		rank = unicode(request.POST['rank'])
-		print site,username,name,institute,country,rank
+		# print site,username,name,institute,country,rank
 		# print site
 		try:
-			print '------A'
+			# print '------A'
 			params = (site,rank)
-			print params
+			# print params
 			# cur.callproc('addOneToRank',params) #calling procedure
-			print "-----------------------------------------------------"
+			# print "-----------------------------------------------------"
 			conn.commit()
 			cur.execute('insert into details() values(%s,%s,%s,%s,%s,%s)',(site,username,name,rank\
 																			,institute,country))
-			print '------B'
+			# print '------B'
 			conn.commit()
 			if username!=None:
 				context = {'username':username,'site':site}
@@ -49,6 +49,6 @@ def alter(request):
 		except:
 			template = 'alter.html'
 			context = {'err1':'error in data\n'}
-			print '------C'
+			# print '------C'
 			conn.rollback()
 			return HttpResponseRedirect("/alter",context)

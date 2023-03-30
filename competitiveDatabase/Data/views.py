@@ -227,26 +227,26 @@ def login(request):
 		password = str(request.POST['password'])	
 
 		sql = "select username,password from admin where username ='%s'"%(username) + " and password = '%s'"%(password)
-		print sql
+		# print(sql)
 		q = cur.execute(sql)
 		data = cur.fetchall()
-		print data
+		# print(data)
 
 		if len(data) ==1:
-			print "User authenticated"
+			# print ("User authenticated")
 			template='homePage.html'
 			request.session['username']=username
 			context = {'username':username}
 			return HttpResponseRedirect("/",context)
 
 		else:
-			print "User not authenticated"
+			# print ("User not a/uthenticated")
 			template = 'login.html'
 			notAuthenticated = 'Not authenticated'
 			context={"error":notAuthenticated}
 			return render(request,template,context)
 
-		print username + " - " + password
+		# print (username + " - " + password)
 
 
 def logout(request):
